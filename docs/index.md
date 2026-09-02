@@ -1,3 +1,8 @@
+---
+layout: default
+title: WebSquare + Spring 고객조회 학습 정리
+---
+
 # WebSquare + Spring 고객조회 학습 정리
 
 > 고객명으로 목록을 조회하고, Grid에서 고객을 선택해 상세정보를 조회하는 전체 흐름을 기준으로 정리한 문서입니다.
