@@ -1,33 +1,114 @@
 <style>
-  .study-menu {
+  .study-nav {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8px;
     margin: 0 0 30px;
-    padding: 12px 0;
+    padding: 10px 0 14px;
     border-bottom: 1px solid #d8dee4;
+    font-size: 15px;
   }
 
-  .study-menu a {
-    display: inline-block;
-    padding: 7px 14px;
-    color: #159957;
+  .study-nav a,
+  .study-nav summary {
+    display: block;
+    padding: 8px 14px;
+    color: #0b6e4f;
     font-weight: 600;
+    line-height: 1.4;
     text-decoration: none;
+    background: #fff;
     border: 1px solid #d0d7de;
-    border-radius: 6px;
-    background-color: #ffffff;
+    border-radius: 7px;
+    cursor: pointer;
   }
 
-  .study-menu a:hover {
-    color: #ffffff;
-    background-color: #159957;
+  .study-nav a:hover,
+  .study-nav a:focus,
+  .study-nav summary:hover,
+  .study-nav summary:focus {
+    color: #fff;
+    background: #159957;
+    outline: none;
+  }
+
+  .study-nav details {
+    position: relative;
+  }
+
+  .study-nav summary {
+    list-style: none;
+  }
+
+  .study-nav summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .study-nav .submenu {
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 285px;
+    padding: 7px;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(140, 149, 159, 0.25);
+  }
+
+  .study-nav .submenu a {
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+
+  .study-nav .submenu a + a {
+    margin-top: 2px;
+  }
+
+  .study-nav .submenu .menu-index {
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    border-bottom: 1px solid #d8dee4;
+    border-radius: 0;
+  }
+
+  @media (max-width: 640px) {
+    .study-nav {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .study-nav .submenu {
+      position: static;
+      min-width: 0;
+      margin-top: 6px;
+      box-shadow: none;
+    }
   }
 </style>
 
-<nav class="study-menu" aria-label="학습 문서 메뉴">
+<nav class="study-nav" aria-label="학습 문서 메뉴">
   <a href="{{ '/' | relative_url }}">홈</a>
-  <a href="{{ '/websquare/' | relative_url }}">WebSquare</a>
+
+  <details>
+    <summary>WebSquare ▾</summary>
+    <div class="submenu">
+      <a class="menu-index" href="{{ '/websquare/' | relative_url }}">WebSquare 학습 정리</a>
+      <a href="{{ '/websquare/search/' | relative_url }}">고객조회 기본</a>
+      <a href="{{ '/websquare/edit/' | relative_url }}">상세정보 수정</a>
+      <a href="{{ '/websquare/create/' | relative_url }}">신규 고객 등록</a>
+      <a href="{{ '/websquare/delete/' | relative_url }}">고객 삭제</a>
+      <a href="{{ '/websquare/validation/' | relative_url }}">입력값 검증</a>
+      <a href="{{ '/websquare/common/' | relative_url }}">공통 메시지·Submission 분석</a>
+      <a href="{{ '/websquare/transaction/' | relative_url }}">트랜잭션과 예외 처리</a>
+    </div>
+  </details>
+
   <a href="{{ '/java/' | relative_url }}">Java</a>
   <a href="{{ '/spring/' | relative_url }}">Spring</a>
 </nav>
