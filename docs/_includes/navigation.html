@@ -1,0 +1,33 @@
+<style>
+  .study-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 30px;
+    padding: 12px 0;
+    border-bottom: 1px solid #d8dee4;
+  }
+
+  .study-menu a {
+    display: inline-block;
+    padding: 7px 14px;
+    color: #159957;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    background-color: #ffffff;
+  }
+
+  .study-menu a:hover {
+    color: #ffffff;
+    background-color: #159957;
+  }
+</style>
+
+<nav class="study-menu" aria-label="학습 문서 메뉴">
+  <a href="{{ '/' | relative_url }}">홈</a>
+  <a href="{{ '/websquare/' | relative_url }}">WebSquare</a>
+  <a href="{{ '/java/' | relative_url }}">Java</a>
+  <a href="{{ '/spring/' | relative_url }}">Spring</a>
+</nav>
