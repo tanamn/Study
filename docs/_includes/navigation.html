@@ -89,6 +89,12 @@
       margin-top: 6px;
       box-shadow: none;
     }
+
+    .study-nav .submenu .sub-item {
+      padding-left: 28px;
+      font-size: 14px;
+      color: #57606a;
+    }
   }
 </style>
 
@@ -102,6 +108,10 @@
       <a href="{{ '/websquare/search/' | relative_url }}">고객조회 기본</a>
       <a href="{{ '/websquare/edit/' | relative_url }}">상세정보 수정</a>
       <a href="{{ '/websquare/create/' | relative_url }}">신규 고객 등록</a>
+      <a class="sub-item"
+        href="{{ '/websquare/create/multi/' | relative_url }}">
+        └ 입력 Grid 다건 등록
+      </a>
       <a href="{{ '/websquare/delete/' | relative_url }}">고객 삭제</a>
       <a href="{{ '/websquare/validation/' | relative_url }}">입력값 검증</a>
       <a href="{{ '/websquare/common/' | relative_url }}">공통 메시지·Submission 분석</a>
