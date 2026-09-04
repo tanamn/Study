@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WebSquare 상세정보 수정 및 저장 학습 정리
+title: WebSquare, Spring 기반 상세정보 수정 및 저장 학습 정리
 permalink: /websquare/edit/
 ---
 
