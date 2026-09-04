@@ -4,6 +4,8 @@ title: 프론트엔드 프레임워크에 따른 Spring API 설계
 permalink: /spring/frontend-integration/
 ---
 
+{% include navigation.html %}
+
 # 프론트엔드 프레임워크에 따른 Spring API 설계
 
 > WebSquare와 React 연계 방식 비교
