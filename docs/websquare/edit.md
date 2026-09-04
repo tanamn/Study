@@ -250,6 +250,75 @@ if (!scwin.isValidPhone(phone)) {
 }
 ```
 
+참고 : WebSquare 화면에서 많이 사용할 만한 검증 함수를 묶으면 이렇게 만들 수 있습니다.
+
+```javascript
+// 휴대폰 번호
+scwin.isValidPhone = function(phone) {
+    return /^01[016789]-\d{3,4}-\d{4}$/.test(phone);
+};
+
+// 이메일
+scwin.isValidEmail = function(email) {
+    return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
+};
+
+// 숫자만
+scwin.isNumber = function(value) {
+    return /^\d+$/.test(value);
+};
+
+// 영문만
+scwin.isEnglish = function(value) {
+    return /^[A-Za-z]+$/.test(value);
+};
+
+// 한글만
+scwin.isKorean = function(value) {
+    return /^[가-힣]+$/.test(value);
+};
+
+// 영문 + 숫자
+scwin.isAlphaNumeric = function(value) {
+    return /^[A-Za-z0-9]+$/.test(value);
+};
+
+// 날짜 YYYY-MM-DD
+scwin.isValidDateFormat = function(value) {
+    return /^\d{4}-\d{2}-\d{2}$/.test(value);
+};
+```
+
+정규식을 볼 때는 아래 기호 몇 개만 먼저 익히면 상당히 읽기 쉬워집니다.
+```
+^       문자열 시작
+$       문자열 끝
+
+\d      숫자 0~9
+\D      숫자가 아닌 문자
+
+[A-Z]   영문 대문자
+[a-z]   영문 소문자
+[A-Za-z] 영문 전체
+
+[0-9]   숫자
+[가-힣] 한글
+
++       1개 이상
+*       0개 이상
+?       0개 또는 1개
+
+{3}     정확히 3개
+{3,4}   3개 또는 4개
+{4,20}  4개 이상 20개 이하
+
+|       OR
+()      그룹
+[]      허용할 문자 집합
+.       임의의 문자
+\.      실제 마침표(.)
+```
+
 프로젝트가 숫자만 저장하는지, 하이픈을 포함해 저장하는지에 따라 정규식과 데이터 정규화 규칙을 맞춰야 합니다.
 
 ---
