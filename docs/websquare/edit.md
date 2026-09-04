@@ -1055,63 +1055,7 @@ DataMap 수정 → 검증 → 저장 Submission → @Transactional → UPDATE �
 
 ---
 
-## 24. GitHub Pages에 현재 문서 추가하기
-
-이 파일을 Repository의 `docs/websquare` 폴더에 `edit.md`라는 이름으로 복사합니다.
-
-```text
-Study
-└─ docs
-   ├─ _includes
-   │  └─ navigation.html
-   ├─ index.md
-   ├─ websquare.md
-   └─ websquare
-      ├─ edit.md
-      ├─ create.md
-      ├─ delete.md
-      ├─ validation.md
-      ├─ common.md
-      └─ transaction.md
-```
-
-현재 문서를 복사하는 PowerShell 명령은 다음과 같습니다.
-
-```powershell
-New-Item -ItemType Directory -Force ".\docs\websquare"
-
-Copy-Item `
-  ".\WebSquare_상세정보_수정_저장_학습정리.md" `
-  ".\docs\websquare\edit.md"
-```
-
-그다음 GitHub에 반영합니다.
-
-```powershell
-git add docs
-git commit -m "WebSquare 하위 메뉴 및 상세정보 수정 문서 추가"
-git push origin main
-```
-
-Pages 배포가 끝나면 다음 경로로 접근할 수 있습니다.
-
-```text
-https://사용자이름.github.io/Study/websquare/edit/
-```
-
-문서 상단의 다음 코드가 공통 메뉴를 표시합니다.
-
-```liquid
-{% raw %}
-{% include navigation.html %}
-{% endraw %}
-```
-
-새 문서를 만들 때도 YAML 머리말 아래에 같은 코드를 넣어야 합니다.
-
----
-
-## 25. 다음 학습 단계
+## 24. 다음 학습 단계
 
 이번 수정·저장 흐름 다음에는 신규 고객 등록을 학습하면 좋습니다.
 
