@@ -17,6 +17,7 @@ WebSquare 화면 개발의 기본 구조부터 고객정보 CRUD, 공통함수, 
 3. [신규 고객 등록]({{ '/websquare/create/' | relative_url }})
    - [입력 Grid 다건 등록]({{ '/websquare/create/multi/' | relative_url }}) 
 4. [고객 삭제]({{ '/websquare/delete/' | relative_url }})
+   - [Grid 다건 삭제]({{ '/websquare/delete/multi/' | relative_url }})  
 5. [입력값 검증]({{ '/websquare/validation/' | relative_url }})
 6. [공통 메시지·Submission 분석]({{ '/websquare/common/' | relative_url }})
 7. [트랜잭션과 예외 처리]({{ '/websquare/transaction/' | relative_url }})
