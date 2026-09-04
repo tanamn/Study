@@ -15,3 +15,4 @@ permalink: /spring/
 3. Service
 4. Repository와 Mapper
 5. 트랜잭션
+6. 프론트엔드 프레임워크에 따른 Spring API 설계

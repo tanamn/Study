@@ -27,3 +27,12 @@ permalink: /
 - [입력값 검증]({{ '/websquare/validation/' | relative_url }})
 - [공통 메시지·Submission 분석]({{ '/websquare/common/' | relative_url }})
 - [트랜잭션과 예외 처리]({{ '/websquare/transaction/' | relative_url }})
+
+## Spring 학습 과정
+
+- [Spring 기본 구조]({{ '/spring/spring/' | relative_url }})
+- [Controller]({{ '/spring/controller/' | relative_url }})
+- [Service]({{ '/spring/service/' | relative_url }})
+- [Repository와 Mapper]({{ '/spring/repository-mapper/' | relative_url }})
+- [트랜잭션]({{ '/spring/transaction/' | relative_url }})
+- [프론트엔드 프레임워크에 따른 Spring API 설계]({{ '/spring/frontend-integration/' | relative_url }})
