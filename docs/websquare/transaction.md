@@ -468,6 +468,29 @@ public class GlobalExceptionHandler {
 
 `@RestControllerAdvice`는 여러 Controller에서 발생한 예외를 공통으로 처리하고 응답 본문을 반환할 때 사용한다. 구체적인 예외 처리 메서드를 먼저 정의하고 마지막에 예상하지 못한 `Exception`을 처리한다.
 
+
+### 13.1 참고: HTTP 상태 코드의 5가지 분류
+
+HTTP 상태 코드는 응답의 성격에 따라 크게 5가지로 구분된다.
+
+| 구분 | 의미 | 대표 상태 코드 |
+|---|---|---|
+| 1xx | 정보 응답 | 100 Continue |
+| 2xx | 요청 성공 | 200 OK, 201 Created, 204 No Content |
+| 3xx | 리다이렉션 | 301 Moved Permanently, 302 Found |
+| 4xx | 클라이언트 요청 오류 | 400 Bad Request, 404 Not Found, 409 Conflict |
+| 5xx | 서버 오류 | 500 Internal Server Error, 503 Service Unavailable |
+
+Spring에서는 `HttpStatus` enum을 통해 이러한 상태 코드를 사용할 수 있다.
+
+```java
+HttpStatus.OK
+HttpStatus.BAD_REQUEST
+HttpStatus.NOT_FOUND
+HttpStatus.CONFLICT
+HttpStatus.INTERNAL_SERVER_ERROR
+
+
 ---
 
 ## 14. Validation 예외 처리
