@@ -293,14 +293,10 @@ C000005
 Grid에서 체크된 행 전체를 가져왔지만 서버에는 삭제에 필요한 `customerId`만 전달한다.
 
 ```javascript
-var deleteRows = [];
+var deleteRows = checkedRows.map(row => ({
+    customerId: row.customerId
+}));
 
-for (var i = 0; i < checkedRows.length; i++) {
-
-    deleteRows.push({
-        customerId: checkedRows[i].customerId
-    });
-}
 ```
 
 예를 들어 `checkedRows`가 다음과 같다면
@@ -409,17 +405,9 @@ scwin.btn_deleteSelected_onclick = function() {
         return;
     }
 
-    var deleteRows = [];
-
-    for (var i = 0;
-         i < checkedRows.length;
-         i++) {
-
-        deleteRows.push({
-            customerId:
-                checkedRows[i].customerId
-        });
-    }
+    var deleteRows = checkedRows.map(row => ({
+        customerId: row.customerId
+    }));
 
     dlt_customerDelete.setJSON(
         deleteRows
@@ -932,17 +920,9 @@ scwin.btn_deleteSelected_onclick = function() {
         return;
     }
 
-    var deleteRows = [];
-
-    for (var i = 0;
-         i < checkedRows.length;
-         i++) {
-
-        deleteRows.push({
-            customerId:
-                checkedRows[i].customerId
-        });
-    }
+    var deleteRows = checkedRows.map(row => ({
+        customerId: row.customerId
+    }));
 
     dlt_customerDelete.setJSON(
         deleteRows
