@@ -565,7 +565,94 @@ public int createCustomer(CustomerCreateDto createDto) {
 }
 ```
 
-동시 요청까지 안전하게 막으려면 애플리케이션의 사전 조회뿐 아니라 DB의 Unique 제약조건도 함께 검토해야 합니다.
+### 18.1 중복 연락처 조회 Mapper
+
+`existsByPhone()`은 MyBatis에서 기본 제공하는 메서드가 아니라 개발자가 직접 정의하는 Mapper 메서드이다.
+
+`CustomerMapper.java`에 다음 메서드를 추가한다.
+
+```java
+@Mapper
+public interface CustomerMapper {
+
+    int insertCustomer(CustomerCreateDto createDto);
+
+    int existsByPhone(String phone);
+}
+```
+
+`existsByPhone()`은 전달받은 연락처와 동일한 고객이 DB에 몇 건 존재하는지 조회한다.
+
+```java
+customerMapper.existsByPhone(
+    createDto.getPhone()
+);
+```
+
+---
+
+### 18.2 Mapper XML
+
+`CustomerMapper.xml`에 `existsByPhone()`과 연결되는 SQL을 작성한다.
+
+```xml
+<select id="existsByPhone"
+        parameterType="String"
+        resultType="int">
+
+    SELECT COUNT(*)
+      FROM CUSTOMER
+     WHERE PHONE = #{phone}
+
+</select>
+```
+
+Mapper 메서드명과 XML의 `id`는 동일하게 작성한다.
+
+```text
+CustomerMapper.java
+int existsByPhone(String phone);
+        ↓
+CustomerMapper.xml
+<select id="existsByPhone">
+```
+
+`#{phone}`에는 Mapper 메서드로 전달된 연락처 값이 바인딩된다.
+
+조회 결과는 다음과 같다.
+
+```text
+0       → 동일한 연락처 없음
+1 이상  → 동일한 연락처 존재
+```
+
+따라서 Service에서는 다음과 같이 중복 여부를 확인할 수 있다.
+
+```java
+if (customerMapper.existsByPhone(
+        createDto.getPhone()) > 0) {
+
+    throw new DuplicateCustomerException(
+        "이미 등록된 연락처입니다."
+    );
+}
+```
+
+전체 흐름은 다음과 같다.
+
+```text
+고객 등록 요청
+    ↓
+existsByPhone(phone)
+    ↓
+SELECT COUNT(*)
+    ↓
+0       → 등록 진행
+1 이상  → 중복 예외 발생
+```
+
+동시 요청까지 안전하게 중복 등록을 방지하려면 DB의 `UNIQUE` 제약조건도 함께 검토하는 것이 좋다.
+
 
 ---
 

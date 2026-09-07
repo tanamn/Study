@@ -678,7 +678,7 @@ public int createCustomers(List<CustomerCreateDto> customers) {
 
     for (CustomerCreateDto customer : customers) {
 
-        int duplicateCount = customerMapper.countByPhone(
+        int duplicateCount = customerMapper.existsByPhone(
             customer.getPhone()
         );
 
