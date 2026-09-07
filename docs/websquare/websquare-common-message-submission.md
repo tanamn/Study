@@ -1,7 +1,7 @@
 ---
 layout: default
 title: WebSquare 공통 메시지·Submission 분석
-permalink: /websquare/common-message-submission/
+permalink: /websquare/common/
 ---
 
 {% include navigation.html %}
