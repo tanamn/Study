@@ -8,9 +8,9 @@ permalink: /websquare/create/
 
 # WebSquare 신규 고객 등록 학습 정리
 
-> 신규 버튼으로 입력 화면을 초기화하고, 고객정보를 입력한 뒤 등록 Submission을 실행하여 Spring·MyBatis의 `INSERT` 처리까지 연결하는 흐름을 정리한 문서입니다.
+> 신규 버튼으로 입력 화면을 초기화하고, 고객정보를 입력한 뒤 등록 Submission을 실행하여 Spring·MyBatis의 `INSERT` 처리까지 연결하는 흐름을 정리한 문서이다.
 
-이 문서는 [WebSquare 학습 정리]({{ '/websquare/' | relative_url }})의 **신규 고객 등록** 단계입니다.
+이 문서는 [WebSquare 학습 정리]({{ '/websquare/' | relative_url }})의 **신규 고객 등록** 단계이다.
 
 ---
 
@@ -38,7 +38,7 @@ MyBatis INSERT
 목록 재조회
 ```
 
-이번 학습에서 다루는 핵심은 다음과 같습니다.
+이번 학습에서 다루는 핵심은 다음과 같다.
 
 - 신규 입력 화면 초기화
 - 등록용 DataMap 구성
@@ -62,7 +62,7 @@ MyBatis INSERT
 | API 예시 | `/api/customer/create` | `/api/customer/update` |
 | 성공 후 처리 | 신규 고객 목록 반영 | 변경된 상세·목록 반영 |
 
-신규 등록에서는 고객번호를 화면에서 임의로 만드는 것보다 서버나 DB에서 생성하는 방식이 일반적입니다.
+신규 등록에서는 고객번호를 화면에서 임의로 만드는 것보다 서버나 DB에서 생성하는 방식이 일반적이다.
 
 ---
 
@@ -77,7 +77,7 @@ MyBatis INSERT
 | Button | `btn_create` | 등록 요청 실행 |
 | GridView | `grd_customer` | 등록 후 고객목록 표시 |
 
-등록용 DataMap은 다음 필드를 가진다고 가정합니다.
+등록용 DataMap은 다음 필드를 가진다고 가정한다.
 
 ```text
 dma_customerForm
@@ -88,7 +88,7 @@ dma_customerForm
 └─ job
 ```
 
-고객번호 `customerId`는 화면에서 보내지 않고 서버 또는 DB에서 생성합니다.
+고객번호 `customerId`는 화면에서 보내지 않고 서버 또는 DB에서 생성한다.
 
 ---
 
@@ -102,7 +102,7 @@ ibx_address      ↔ dma_customerForm.address
 ibx_job          ↔ dma_customerForm.job
 ```
 
-사용자가 값을 입력하면 바인딩된 DataMap에도 값이 반영됩니다.
+사용자가 값을 입력하면 바인딩된 DataMap에도 값이 반영된다.
 
 ```javascript
 {
@@ -118,7 +118,7 @@ ibx_job          ↔ dma_customerForm.job
 
 ## 5. 신규 버튼 처리
 
-신규 버튼을 클릭하면 기존 상세조회 값이 남지 않도록 등록 폼을 초기화합니다.
+신규 버튼을 클릭하면 기존 상세조회 값이 남지 않도록 등록 폼을 초기화한다.
 
 ```javascript
 scwin.btn_new_onclick = function(e) {
@@ -127,7 +127,7 @@ scwin.btn_new_onclick = function(e) {
 };
 ```
 
-초기화 함수는 다음처럼 구성할 수 있습니다.
+초기화 함수는 다음처럼 구성할 수 있다.
 
 ```javascript
 scwin.clearCustomerForm = function() {
@@ -139,10 +139,10 @@ scwin.clearCustomerForm = function() {
 };
 ```
 
-프로젝트에서 DataMap 전체 초기화 공통함수를 제공한다면 해당 공통함수를 우선 사용합니다.
+프로젝트에서 DataMap 전체 초기화 공통함수를 제공한다면 해당 공통함수를 우선 사용한다.
 
 ```javascript
-// 프로젝트별 예시이며 실제 함수명은 다를 수 있습니다.
+// 프로젝트별 예시이며 실제 함수명은 다를 수 있다.
 com.data.clear(dma_customerForm);
 ```
 
@@ -204,7 +204,7 @@ scwin.isValidPhone = function(phone) {
 | `01012345678` | 오류 |
 | `02-1234-5678` | 오류 |
 
-화면 검증은 사용자 편의를 위한 1차 검증입니다. 요청 데이터는 조작될 수 있으므로 서버에서도 반드시 다시 검증해야 합니다.
+화면 검증은 사용자 편의를 위한 1차 검증이다. 요청 데이터는 조작될 수 있으므로 서버에서도 반드시 다시 검증해야 한다.
 
 ---
 
@@ -225,7 +225,7 @@ scwin.btn_create_onclick = function(e) {
 };
 ```
 
-처리 순서는 다음과 같습니다.
+처리 순서는 다음과 같다.
 
 ```text
 등록 버튼 클릭
@@ -256,7 +256,7 @@ Target:    dma_createResult
 Mode:      asynchronous
 ```
 
-방향을 정리하면 다음과 같습니다.
+방향을 정리하면 다음과 같다.
 
 ```text
 dma_customerForm
@@ -268,7 +268,7 @@ Spring Controller
 dma_createResult
 ```
 
-서버로 전달되는 JSON 예시는 다음과 같습니다.
+서버로 전달되는 JSON 예시는 다음과 같다.
 
 ```json
 {
@@ -284,7 +284,7 @@ dma_createResult
 
 ## 9. 등록 요청 DTO
 
-이 코드는 WebSquare Script가 아니라 Spring 백엔드의 Java 코드입니다.
+이 코드는 WebSquare Script가 아니라 Spring 백엔드의 Java 코드이다.
 
 ```java
 @Getter
@@ -311,7 +311,7 @@ public class CustomerCreateDto {
 }
 ```
 
-Java 문자열에서는 정규식의 역슬래시를 한 번 더 이스케이프해야 합니다.
+Java 문자열에서는 정규식의 역슬래시를 한 번 더 이스케이프해야 한다.
 
 ```text
 JavaScript 정규식: \d
@@ -322,7 +322,7 @@ Java 문자열:        \\d
 
 ## 10. Jackson의 DTO 변환
 
-Spring의 `@RequestBody`는 요청 JSON을 Java DTO로 변환합니다. 이때 일반적으로 Jackson이 사용됩니다.
+Spring의 `@RequestBody`는 요청 JSON을 Java DTO로 변환한다. 이때 일반적으로 Jackson이 사용된다.
 
 ```text
 WebSquare DataMap
@@ -332,7 +332,7 @@ JSON 요청
 CustomerCreateDto
 ```
 
-JSON 속성명과 DTO 필드명이 일치해야 자연스럽게 연결됩니다.
+JSON 속성명과 DTO 필드명이 일치해야 자연스럽게 연결된다.
 
 | JSON | DTO |
 |---|---|
@@ -370,7 +370,7 @@ public class CustomerController {
 }
 ```
 
-최종 호출 주소는 두 애너테이션이 합쳐져 만들어집니다.
+최종 호출 주소는 두 애너테이션이 합쳐져 만들어진다.
 
 ```text
 @RequestMapping("/api/customer")
@@ -379,7 +379,7 @@ public class CustomerController {
 /api/customer/create
 ```
 
-이 주소는 WebSquare Submission의 Action과 일치해야 합니다.
+이 주소는 WebSquare Submission의 Action과 일치해야 한다.
 
 ---
 
@@ -396,7 +396,7 @@ public class CustomerCreateResponse {
 }
 ```
 
-Controller가 객체를 반환하면 Jackson이 JSON으로 직렬화합니다.
+Controller가 객체를 반환하면 Jackson이 JSON으로 직렬화한다.
 
 ```json
 {
@@ -406,7 +406,7 @@ Controller가 객체를 반환하면 Jackson이 JSON으로 직렬화합니다.
 }
 ```
 
-이 결과는 `dma_createResult`에 저장됩니다.
+이 결과는 `dma_createResult`에 저장된다.
 
 ---
 
@@ -426,14 +426,14 @@ public class CustomerService {
 }
 ```
 
-`@Transactional`은 등록 도중 예외가 발생하면 DB 작업을 롤백하는 역할을 합니다.
+`@Transactional`은 등록 도중 예외가 발생하면 DB 작업을 롤백하는 역할을 한다.
 
 ```text
 INSERT 성공 → Commit
 INSERT 실패 → Rollback
 ```
 
-등록 작업이 한 건뿐이어도 Service 계층을 트랜잭션 경계로 두면 이후 연관 데이터 등록이 추가될 때 관리하기 좋습니다.
+등록 작업이 한 건뿐이어도 Service 계층을 트랜잭션 경계로 두면 이후 연관 데이터 등록이 추가될 때 관리하기 좋다.
 
 ---
 
@@ -447,7 +447,7 @@ public interface CustomerMapper {
 }
 ```
 
-반환값은 INSERT로 영향을 받은 행의 수입니다.
+반환값은 INSERT로 영향을 받은 행의 수이다.
 
 ```text
 1 → 한 건 등록 성공
@@ -458,7 +458,7 @@ public interface CustomerMapper {
 
 ## 15. MyBatis INSERT
 
-Oracle 또는 Tibero에서 Sequence로 고객번호를 생성하는 예시입니다.
+Oracle 또는 Tibero에서 Sequence로 고객번호를 생성하는 예시이다.
 
 ```xml
 <insert id="insertCustomer"
@@ -485,13 +485,13 @@ Oracle 또는 Tibero에서 Sequence로 고객번호를 생성하는 예시입니
 </insert>
 ```
 
-예를 들어 Sequence 값이 `15`라면 고객번호는 다음처럼 만들어집니다.
+예를 들어 Sequence 값이 `15`라면 고객번호는 다음처럼 만들어진다.
 
 ```text
 C000015
 ```
 
-고객번호 생성 규칙은 프로젝트 표준에 따라 UUID, Sequence 또는 별도의 채번 서비스를 사용할 수 있습니다.
+고객번호 생성 규칙은 프로젝트 표준에 따라 UUID, Sequence 또는 별도의 채번 서비스를 사용할 수 있다.
 
 ---
 
@@ -515,14 +515,14 @@ scwin.sbm_createCustomer_submitdone = function(e) {
 };
 ```
 
-등록에 성공하면 다음 작업을 수행합니다.
+등록에 성공하면 다음 작업을 수행한다.
 
-1. 등록 버튼을 다시 활성화합니다.
-2. 성공 메시지를 표시합니다.
-3. 입력 폼을 초기화합니다.
-4. 고객목록을 다시 조회합니다.
+1. 등록 버튼을 다시 활성화한다.
+2. 성공 메시지를 표시한다.
+3. 입력 폼을 초기화한다.
+4. 고객목록을 다시 조회한다.
 
-프로젝트에서 등록된 고객의 상세화면으로 이동해야 한다면 서버가 생성한 `customerId`를 응답에 포함하도록 응답 DTO를 확장할 수 있습니다.
+프로젝트에서 등록된 고객의 상세화면으로 이동해야 한다면 서버가 생성한 `customerId`를 응답에 포함하도록 응답 DTO를 확장할 수 있다.
 
 ---
 
@@ -535,22 +535,22 @@ scwin.sbm_createCustomer_submiterror = function(e) {
 };
 ```
 
-성공과 오류 처리 모두에서 버튼을 다시 활성화해야 오류 발생 후 등록 버튼이 계속 비활성화되는 문제를 방지할 수 있습니다.
+성공과 오류 처리 모두에서 버튼을 다시 활성화해야 오류 발생 후 등록 버튼이 계속 비활성화되는 문제를 방지할 수 있다.
 
 ---
 
 ## 18. 중복 고객 확인
 
-고객명만으로는 동명이인을 구분할 수 없으므로 이름 하나만으로 중복을 판단하면 안 됩니다.
+고객명만으로는 동명이인을 구분할 수 없으므로 이름 하나만으로 중복을 판단하면 안 된다.
 
-프로젝트의 업무 규칙에 따라 다음 항목을 조합할 수 있습니다.
+프로젝트의 업무 규칙에 따라 다음 항목을 조합할 수 있다.
 
 - 고객 식별번호
 - 휴대전화 번호
 - 생년월일
 - 외부 고객번호
 
-예를 들어 연락처 중복 확인이 필요하다면 Service에서 등록 전에 조회합니다.
+예를 들어 연락처 중복 확인이 필요하다면 Service에서 등록 전에 조회한다.
 
 ```java
 @Transactional
@@ -567,9 +567,9 @@ public int createCustomer(CustomerCreateDto createDto) {
 
 ### 18.1 중복 연락처 조회 Mapper
 
-`existsByPhone()`은 연락처가 이미 등록되어 있는지 확인하기 위한 Mapper 메서드입니다.
+`existsByPhone()`은 연락처가 이미 등록되어 있는지 확인하기 위한 Mapper 메서드이다.
 
-`CustomerMapper`에 다음과 같이 추가합니다.
+`CustomerMapper`에 다음과 같이 추가한다.
 
 ```java
 @Mapper
@@ -581,13 +581,13 @@ public interface CustomerMapper {
 }
 ```
 
-`existsByPhone()`은 전달받은 연락처와 동일한 고객의 건수를 조회합니다.
+`existsByPhone()`은 전달받은 연락처와 동일한 고객의 건수를 조회한다.
 
 ---
 
 ### 18.2 중복 연락처 조회 SQL
 
-`CustomerMapper.xml`에 다음 조회 SQL을 추가합니다.
+`CustomerMapper.xml`에 다음 조회 SQL을 추가한다.
 
 ```xml
 <select id="existsByPhone"
@@ -601,16 +601,16 @@ public interface CustomerMapper {
 </select>
 ```
 
-`#{phone}`에는 `existsByPhone()`으로 전달한 연락처가 바인딩됩니다.
+`#{phone}`에는 `existsByPhone()`으로 전달한 연락처가 바인딩된다.
 
-조회 결과는 다음과 같습니다.
+조회 결과는 다음과 같다.
 
 ```text
 0       → 동일한 연락처 없음
 1 이상  → 동일한 연락처 있음
 ```
 
-따라서 Service에서는 다음 조건으로 중복 여부를 확인할 수 있습니다.
+따라서 Service에서는 다음 조건으로 중복 여부를 확인할 수 있다.
 
 ```java
 if (customerMapper.existsByPhone(
@@ -622,7 +622,7 @@ if (customerMapper.existsByPhone(
 }
 ```
 
-처리 흐름은 다음과 같습니다.
+처리 흐름은 다음과 같다.
 
 ```text
 고객 등록 요청
@@ -635,13 +635,13 @@ SELECT COUNT(*)
 1 이상  → 중복 예외 발생
 ```
 
-동시 요청까지 안전하게 막으려면 애플리케이션의 사전 조회뿐 아니라 DB의 Unique 제약조건도 함께 검토해야 합니다.
+동시 요청까지 안전하게 막으려면 애플리케이션의 사전 조회뿐 아니라 DB의 Unique 제약조건도 함께 검토해야 한다.
 
 ---
 
 ## 19. 서버 검증 오류 처리
 
-`@Valid` 검증에 실패하면 Controller 메서드에 진입하기 전에 예외가 발생합니다.
+`@Valid` 검증에 실패하면 Controller 메서드에 진입하기 전에 예외가 발생한다.
 
 ```java
 @RestControllerAdvice
@@ -662,7 +662,7 @@ public class GlobalExceptionHandler {
 }
 ```
 
-처리 흐름은 다음과 같습니다.
+처리 흐름은 다음과 같다.
 
 ```text
 요청 JSON
@@ -809,7 +809,7 @@ public int createCustomer(CustomerCreateDto createDto) {
 INSERT INTO CUSTOMER (...) VALUES (...)
 ```
 
-한 줄로 정리하면 다음과 같습니다.
+한 줄로 정리하면 다음과 같다.
 
 ```text
 폼 초기화 → 입력·검증 → 등록 Submission → @Valid → @Transactional → INSERT → 목록 재조회

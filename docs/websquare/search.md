@@ -8,11 +8,11 @@ permalink: /websquare/search/
 
 # WebSquare + Spring 고객조회 학습 정리
 
-> 고객명으로 목록을 조회하고, Grid에서 고객을 선택해 상세정보를 조회하는 전체 흐름을 기준으로 정리한 문서입니다.
+> 고객명으로 목록을 조회하고, Grid에서 고객을 선택해 상세정보를 조회하는 전체 흐름을 기준으로 정리한 문서이다.
 
 ## 1. 전체 구조
 
-WebSquare 화면 개발의 기본 구조는 다음과 같습니다.
+WebSquare 화면 개발의 기본 구조는 다음과 같다.
 
 ```text
 사용자 입력
@@ -32,7 +32,7 @@ DataList 또는 DataMap
 GridView 또는 상세 입력 영역
 ```
 
-핵심은 화면 컴포넌트가 서버와 직접 데이터를 주고받는 것이 아니라, `DataMap`·`DataList`와 같은 데이터 객체를 통해 연결된다는 점입니다.
+핵심은 화면 컴포넌트가 서버와 직접 데이터를 주고받는 것이 아니라, `DataMap`·`DataList`와 같은 데이터 객체를 통해 연결된다는 점이다.
 
 ---
 
@@ -40,9 +40,9 @@ GridView 또는 상세 입력 영역
 
 ### 2.1 DataMap
 
-한 건의 데이터를 저장하는 key/value 형태의 객체입니다.
+한 건의 데이터를 저장하는 key/value 형태의 객체이다.
 
-주로 다음 용도로 사용합니다.
+주로 다음 용도로 사용한다.
 
 - 조회조건
 - 상세정보
@@ -54,22 +54,22 @@ GridView 또는 상세 입력 영역
 }
 ```
 
-Java의 DTO 한 건과 비슷합니다.
+Java의 DTO 한 건과 비슷하다.
 
 ### 2.2 DataList
 
-여러 건의 행 데이터를 저장합니다.
+여러 건의 행 데이터를 저장한다.
 
 ```text
 row 0: C001, 김철수
 row 1: C002, 김영희
 ```
 
-Java의 `List<CustomerDto>`와 비슷하며, 일반적으로 GridView와 바인딩합니다.
+Java의 `List<CustomerDto>`와 비슷하며, 일반적으로 GridView와 바인딩한다.
 
 ### 2.3 GridView
 
-DataList의 내용을 표 형태로 보여주는 화면 컴포넌트입니다.
+DataList의 내용을 표 형태로 보여주는 화면 컴포넌트이다.
 
 ```text
 DataList = 실제 데이터
@@ -78,20 +78,20 @@ GridView = 데이터를 보여주는 화면
 
 ### 2.4 Submission
 
-서버와 데이터를 주고받는 통신 객체입니다. React의 `axios` 또는 `fetch()`와 비슷한 역할을 합니다.
+서버와 데이터를 주고받는 통신 객체이다. React의 `axios` 또는 `fetch()`와 비슷한 역할을 한다.
 
 ```text
 Reference = 서버로 보낼 데이터
 Target    = 서버에서 받은 데이터를 저장할 곳
 ```
 
-실행 예시는 다음과 같습니다.
+실행 예시는 다음과 같다.
 
 ```javascript
 $p.executeSubmission(sbm_searchCustomer);
 ```
 
-프로젝트 공통함수로 감싼 경우 다음처럼 보일 수도 있습니다.
+프로젝트 공통함수로 감싼 경우 다음처럼 보일 수도 있다.
 
 ```javascript
 com.sbm.execute(sbm_searchCustomer);
@@ -116,7 +116,7 @@ ID: dma_search
 컬럼: customerName
 ```
 
-고객명 입력 컴포넌트와 다음처럼 바인딩합니다.
+고객명 입력 컴포넌트와 다음처럼 바인딩한다.
 
 ```text
 ibx_customerName
@@ -124,7 +124,7 @@ ibx_customerName
 dma_search.customerName
 ```
 
-사용자가 `김`을 입력하면 DataMap은 다음 상태가 됩니다.
+사용자가 `김`을 입력하면 DataMap은 다음 상태가 된다.
 
 ```javascript
 {
@@ -144,7 +144,7 @@ ID: dlt_customer
 - phone
 ```
 
-Grid와 연결합니다.
+Grid와 연결한다.
 
 ```text
 dlt_customer
@@ -163,7 +163,7 @@ Target:    dlt_customer
 Mode:      asynchronous
 ```
 
-요청과 응답의 방향은 다음과 같습니다.
+요청과 응답의 방향은 다음과 같다.
 
 ```text
 dma_search → Reference → 서버 요청
@@ -185,7 +185,7 @@ scwin.btn_search_onclick = function(e) {
 };
 ```
 
-실무의 공통 라이브러리를 적용한 코드는 다음처럼 보일 수 있습니다.
+실무의 공통 라이브러리를 적용한 코드는 다음처럼 보일 수 있다.
 
 ```javascript
 scwin.btn_search_onclick = function(e) {
@@ -198,7 +198,7 @@ scwin.btn_search_onclick = function(e) {
 };
 ```
 
-`com.util`, `com.alert`, `com.sbm`은 WebSquare 기본 API가 아니라 프로젝트 공통 라이브러리일 가능성이 높습니다.
+`com.util`, `com.alert`, `com.sbm`은 WebSquare 기본 API가 아니라 프로젝트 공통 라이브러리일 가능성이 높다.
 
 ---
 
@@ -307,7 +307,7 @@ public interface CustomerMapper {
 ]
 ```
 
-응답은 Submission의 Target인 `dlt_customer`에 저장되고, 바인딩된 `grd_customer`에 자동 표시됩니다.
+응답은 Submission의 Target인 `dlt_customer`에 저장되고, 바인딩된 `grd_customer`에 자동 표시된다.
 
 ```text
 JSON 응답
@@ -342,13 +342,13 @@ scwin.sbm_searchCustomer_submiterror = function(e) {
 };
 ```
 
-프로젝트에 따라 이벤트 함수명이나 공통 처리 방식은 달라질 수 있으므로 기존 화면의 구현 규칙을 먼저 확인해야 합니다.
+프로젝트에 따라 이벤트 함수명이나 공통 처리 방식은 달라질 수 있으므로 기존 화면의 구현 규칙을 먼저 확인해야 한다.
 
 ---
 
 ## 6. Grid 선택 후 고객 상세조회
 
-이번 기능의 목표는 다음과 같습니다.
+이번 기능의 목표는 다음과 같다.
 
 ```text
 Grid 행 선택
@@ -387,7 +387,7 @@ ID: dma_detailSearch
 
 ### 6.3 상세결과 DataMap
 
-고객 한 명의 정보이므로 DataList가 아닌 DataMap을 사용합니다.
+고객 한 명의 정보이므로 DataList가 아닌 DataMap을 사용한다.
 
 ```text
 ID: dma_customerDetail
@@ -424,7 +424,7 @@ var customerId = dlt_customer.getCellData(
 );
 ```
 
-Java로 생각하면 다음과 비슷합니다.
+Java로 생각하면 다음과 비슷하다.
 
 ```java
 CustomerDto customer = customerList.get(rowIndex);
@@ -458,7 +458,7 @@ scwin.grd_customer_oncellclick = function(rowIndex, colIndex) {
 };
 ```
 
-이번 예제의 핵심은 다음 세 단계입니다.
+이번 예제의 핵심은 다음 세 단계이다.
 
 ```text
 getCellData()
@@ -472,7 +472,7 @@ executeSubmission()
 
 ## 8. 실무형 코드 구조
 
-Grid 이벤트와 상세조회 함수를 분리하면 다른 이벤트에서도 상세조회 기능을 재사용할 수 있습니다.
+Grid 이벤트와 상세조회 함수를 분리하면 다른 이벤트에서도 상세조회 기능을 재사용할 수 있다.
 
 ```javascript
 scwin.grd_customer_oncellclick = function(rowIndex, colIndex) {
@@ -498,7 +498,7 @@ scwin.searchCustomerDetail = function(customerId) {
 };
 ```
 
-다음과 같은 여러 진입점에서 재사용할 수 있습니다.
+다음과 같은 여러 진입점에서 재사용할 수 있다.
 
 ```text
 Grid 행 클릭 ──────┐
@@ -561,7 +561,7 @@ CustomerDto selectCustomerDetail(String customerId);
 </select>
 ```
 
-목록의 전체 데이터를 보내지 않고 `customerId`만 전달해 DB에서 최신 상세정보를 다시 조회하는 것이 일반적입니다.
+목록의 전체 데이터를 보내지 않고 `customerId`만 전달해 DB에서 최신 상세정보를 다시 조회하는 것이 일반적이다.
 
 ```text
 목록 화면의 값 ≠ 반드시 최신 상세 값
@@ -571,7 +571,7 @@ CustomerDto selectCustomerDetail(String customerId);
 
 ## 10. 상세정보 화면 바인딩
 
-상세영역의 입력 컴포넌트를 `dma_customerDetail`의 각 컬럼에 바인딩합니다.
+상세영역의 입력 컴포넌트를 `dma_customerDetail`의 각 컬럼에 바인딩한다.
 
 ```text
 ibx_customerId   ↔ dma_customerDetail.customerId
@@ -582,7 +582,7 @@ ibx_address      ↔ dma_customerDetail.address
 ibx_job          ↔ dma_customerDetail.job
 ```
 
-Submission 결과가 DataMap에 저장되면 화면에도 자동으로 반영되므로 다음과 같은 개별 값 설정 코드는 필요하지 않습니다.
+Submission 결과가 DataMap에 저장되면 화면에도 자동으로 반영되므로 다음과 같은 개별 값 설정 코드는 필요하지 않다.
 
 ```javascript
 // 바인딩했다면 일반적으로 불필요
@@ -650,7 +650,7 @@ const response = await axios.post(
 setCustomers(response.data);
 ```
 
-WebSquare에서는 다음 구조로 대응됩니다.
+WebSquare에서는 다음 구조로 대응된다.
 
 ```text
 searchCondition → dma_search
@@ -679,48 +679,48 @@ setCustomers()  → Submission Target 처리
 
 ## 14. 처음 보는 프로젝트 소스 추적 순서
 
-조회 버튼의 동작을 확인할 때는 XML 전체를 처음부터 읽기보다 다음 순서로 따라가는 것이 효율적입니다.
+조회 버튼의 동작을 확인할 때는 XML 전체를 처음부터 읽기보다 다음 순서로 따라가는 것이 효율적이다.
 
-1. 화면에서 버튼 ID를 확인합니다.
+1. 화면에서 버튼 ID를 확인한다.
 
    ```text
    btn_search
    ```
 
-2. 버튼 이벤트를 검색합니다.
+2. 버튼 이벤트를 검색한다.
 
    ```javascript
    scwin.btn_search_onclick
    ```
 
-3. 이벤트 안에서 실행하는 Submission을 확인합니다.
+3. 이벤트 안에서 실행하는 Submission을 확인한다.
 
    ```javascript
    $p.executeSubmission(sbm_searchCustomer);
    ```
 
-4. Submission의 Action(URL)을 확인합니다.
+4. Submission의 Action(URL)을 확인한다.
 
    ```text
    /api/customer/search
    ```
 
-5. Reference와 Target을 확인합니다.
+5. Reference와 Target을 확인한다.
 
    ```text
    Reference: dma_search
    Target:    dlt_customer
    ```
 
-6. 백엔드에서 Controller URL을 검색합니다.
+6. 백엔드에서 Controller URL을 검색한다.
 
    ```java
    @PostMapping("/search")
    ```
 
-7. Service → Mapper → SQL 순서로 따라갑니다.
+7. Service → Mapper → SQL 순서로 따라간다.
 
-실전 공식으로 줄이면 다음과 같습니다.
+실전 공식으로 줄이면 다음과 같다.
 
 ```text
 Button
@@ -764,7 +764,7 @@ SQL
    GridView 또는 상세화면
    ```
 
-Grid 선택 상세조회의 핵심 세 줄도 함께 기억하면 좋습니다.
+Grid 선택 상세조회의 핵심 세 줄도 함께 기억하면 좋다.
 
 ```javascript
 var customerId = dlt_customer.getCellData(rowIndex, "customerId");
@@ -776,7 +776,7 @@ $p.executeSubmission(sbm_searchCustomerDetail);
 
 ## 16. 다음 학습 단계
 
-다음 단계로 아래 흐름을 연결하면 WebSquare의 기본 CRUD 구조를 완성할 수 있습니다.
+다음 단계로 아래 흐름을 연결하면 WebSquare의 기본 CRUD 구조를 완성할 수 있다.
 
 ```text
 상세정보 수정
@@ -794,7 +794,7 @@ INSERT 또는 UPDATE
 목록 재조회
 ```
 
-추천 학습 순서는 다음과 같습니다.
+추천 학습 순서는 다음과 같다.
 
 1. 상세정보 수정 및 저장
 2. 신규 고객 등록

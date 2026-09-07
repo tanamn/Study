@@ -8,15 +8,15 @@ permalink: /websquare/edit/
 
 # WebSquare 상세정보 수정 및 저장 학습 정리
 
-> 고객 목록에서 선택한 고객의 상세정보를 수정하고, 저장 Submission을 통해 Spring·MyBatis의 UPDATE 처리까지 연결하는 전체 흐름을 정리한 문서입니다.
+> 고객 목록에서 선택한 고객의 상세정보를 수정하고, 저장 Submission을 통해 Spring·MyBatis의 UPDATE 처리까지 연결하는 전체 흐름을 정리한 문서이다.
 
-이 문서는 [WebSquare 학습 정리]({{ '/websquare/' | relative_url }})의 **상세정보 수정** 단계입니다.
+이 문서는 [WebSquare 학습 정리]({{ '/websquare/' | relative_url }})의 **상세정보 수정** 단계이다.
 
 ---
 
 ## 1. 이번 학습의 목표
 
-앞에서 학습한 고객 상세조회 다음 단계입니다.
+앞에서 학습한 고객 상세조회 다음 단계이다.
 
 ```text
 고객 상세조회
@@ -40,7 +40,7 @@ MyBatis UPDATE
 상세정보와 목록 재조회
 ```
 
-이번 문서에서 사용하는 주요 객체는 다음과 같습니다.
+이번 문서에서 사용하는 주요 객체는 다음과 같다.
 
 | 구분 | ID | 역할 |
 |---|---|---|
@@ -54,7 +54,7 @@ MyBatis UPDATE
 
 ## 2. 상세화면과 DataMap 바인딩
 
-고객 상세정보는 한 명의 데이터이므로 `DataMap`을 사용합니다.
+고객 상세정보는 한 명의 데이터이므로 `DataMap`을 사용한다.
 
 ```text
 dma_customerDetail
@@ -67,7 +67,7 @@ dma_customerDetail
 - job
 ```
 
-상세화면의 입력 컴포넌트와 각 항목을 바인딩합니다.
+상세화면의 입력 컴포넌트와 각 항목을 바인딩한다.
 
 ```text
 ibx_customerId   ↔ dma_customerDetail.customerId
@@ -78,7 +78,7 @@ ibx_address      ↔ dma_customerDetail.address
 ibx_job          ↔ dma_customerDetail.job
 ```
 
-상세조회 결과가 다음과 같다고 가정하겠습니다.
+상세조회 결과가 다음과 같다고 가정하겠다.
 
 ```json
 {
@@ -91,13 +91,13 @@ ibx_job          ↔ dma_customerDetail.job
 }
 ```
 
-이 결과가 `dma_customerDetail`에 들어오면 바인딩된 입력 컴포넌트에 자동으로 표시됩니다.
+이 결과가 `dma_customerDetail`에 들어오면 바인딩된 입력 컴포넌트에 자동으로 표시된다.
 
 ---
 
 ## 3. 조회 전용 항목과 수정 가능 항목 구분
 
-모든 값을 수정할 수 있게 만드는 것은 적절하지 않습니다.
+모든 값을 수정할 수 있게 만드는 것은 적절하지 않다.
 
 | 항목 | 수정 여부 | 이유 |
 |---|---:|---|
@@ -108,19 +108,19 @@ ibx_job          ↔ dma_customerDetail.job
 | 주소 | 가능 | 고객 요청에 따라 변경 가능 |
 | 직업 | 가능 | 고객정보 갱신 대상으로 사용 가능 |
 
-예를 들어 고객번호 입력 컴포넌트는 읽기 전용으로 설정합니다.
+예를 들어 고객번호 입력 컴포넌트는 읽기 전용으로 설정한다.
 
 ```javascript
 ibx_customerId.setReadOnly(true);
 ```
 
-컴포넌트의 읽기 전용 설정 방식은 WebSquare 버전이나 프로젝트 공통함수에 따라 다를 수 있으므로 기존 화면의 구현 방법을 우선 확인합니다.
+컴포넌트의 읽기 전용 설정 방식은 WebSquare 버전이나 프로젝트 공통함수에 따라 다를 수 있으므로 기존 화면의 구현 방법을 우선 확인한다.
 
 ---
 
 ## 4. 사용자가 값을 수정하면 어떻게 되는가
 
-Input과 DataMap이 양방향 바인딩되어 있다면 사용자가 화면 값을 변경했을 때 DataMap 값도 함께 변경됩니다.
+Input과 DataMap이 양방향 바인딩되어 있다면 사용자가 화면 값을 변경했을 때 DataMap 값도 함께 변경된다.
 
 수정 전:
 
@@ -144,7 +144,7 @@ dma_customerDetail = {
 };
 ```
 
-바인딩을 사용하지 않는 화면이라면 저장 전에 컴포넌트 값을 직접 DataMap에 넣어야 합니다.
+바인딩을 사용하지 않는 화면이라면 저장 전에 컴포넌트 값을 직접 DataMap에 넣어야 한다.
 
 ```javascript
 dma_customerDetail.set("phone", ibx_phone.getValue());
@@ -152,15 +152,15 @@ dma_customerDetail.set("address", ibx_address.getValue());
 dma_customerDetail.set("job", ibx_job.getValue());
 ```
 
-가능하면 화면 컴포넌트마다 값을 일일이 복사하기보다 DataMap 바인딩을 일관되게 사용하는 것이 관리하기 쉽습니다.
+가능하면 화면 컴포넌트마다 값을 일일이 복사하기보다 DataMap 바인딩을 일관되게 사용하는 것이 관리하기 쉽다.
 
 ---
 
 ## 5. 수정 여부 확인
 
-저장 버튼을 눌렀지만 아무 값도 변경되지 않았다면 서버를 호출하지 않아도 됩니다.
+저장 버튼을 눌렀지만 아무 값도 변경되지 않았다면 서버를 호출하지 않아도 된다.
 
-WebSquare DataMap은 원본과 현재 값이 다른 항목을 확인하는 API를 제공합니다.
+WebSquare DataMap은 원본과 현재 값이 다른 항목을 확인하는 API를 제공한다.
 
 ```javascript
 var modifiedIndexes = dma_customerDetail.getModifiedIndex();
@@ -171,7 +171,7 @@ if (modifiedIndexes.length === 0) {
 }
 ```
 
-변경된 key만 확인할 수도 있습니다.
+변경된 key만 확인할 수도 있다.
 
 ```javascript
 var modifiedKeys = dma_customerDetail.getModifiedKey();
@@ -184,7 +184,7 @@ console.log(modifiedKeys);
 ["phone", "address"]
 ```
 
-변경된 값만 JSON으로 확인하는 방법도 있습니다.
+변경된 값만 JSON으로 확인하는 방법도 있다.
 
 ```javascript
 var modifiedData = dma_customerDetail.getModifiedJSON();
@@ -200,13 +200,13 @@ console.log(modifiedData);
 }
 ```
 
-> 변경 감지 결과는 DataMap의 초기화 방식과 `firstSet` 설정 등의 영향을 받을 수 있습니다. 실제 프로젝트에서는 상세조회 완료 후 DataMap의 원본 상태가 어떻게 관리되는지 확인해야 합니다.
+> 변경 감지 결과는 DataMap의 초기화 방식과 `firstSet` 설정 등의 영향을 받을 수 있다. 실제 프로젝트에서는 상세조회 완료 후 DataMap의 원본 상태가 어떻게 관리되는지 확인해야 한다.
 
 ---
 
 ## 6. 저장 전 입력값 검증
 
-프론트엔드 검증은 사용자에게 빠르게 오류를 알려주는 역할을 합니다. 서버에서도 동일한 핵심 검증을 다시 수행해야 합니다.
+프론트엔드 검증은 사용자에게 빠르게 오류를 알려주는 역할을 한다. 서버에서도 동일한 핵심 검증을 다시 수행해야 한다.
 
 ### 6.1 필수값 검증
 
@@ -240,7 +240,7 @@ scwin.isValidPhone = function(phone) {
 };
 ```
 
-저장 검증 함수에서 사용합니다.
+저장 검증 함수에서 사용한다.
 
 ```javascript
 if (!scwin.isValidPhone(phone)) {
@@ -250,7 +250,7 @@ if (!scwin.isValidPhone(phone)) {
 }
 ```
 
-참고 : WebSquare 화면에서 많이 사용할 만한 검증 함수를 묶으면 이렇게 만들 수 있습니다.
+참고 : WebSquare 화면에서 많이 사용할 만한 검증 함수를 묶으면 이렇게 만들 수 있다.
 
 ```javascript
 // 휴대폰 번호
@@ -289,7 +289,7 @@ scwin.isValidDateFormat = function(value) {
 };
 ```
 
-정규식을 볼 때는 아래 기호 몇 개만 먼저 익히면 상당히 읽기 쉬워집니다.
+정규식을 볼 때는 아래 기호 몇 개만 먼저 익히면 상당히 읽기 쉬워진다.
 ```
 ^       문자열 시작
 $       문자열 끝
@@ -319,13 +319,13 @@ $       문자열 끝
 \.      실제 마침표(.)
 ```
 
-프로젝트가 숫자만 저장하는지, 하이픈을 포함해 저장하는지에 따라 정규식과 데이터 정규화 규칙을 맞춰야 합니다.
+프로젝트가 숫자만 저장하는지, 하이픈을 포함해 저장하는지에 따라 정규식과 데이터 정규화 규칙을 맞춰야 한다.
 
 ---
 
 ## 7. 저장 Submission 만들기
 
-저장 Submission을 다음과 같이 구성합니다.
+저장 Submission을 다음과 같이 구성한다.
 
 ```text
 ID:        sbm_saveCustomer
@@ -336,7 +336,7 @@ Target:    dma_saveResult
 Mode:      asynchronous
 ```
 
-역할은 다음과 같습니다.
+역할은 다음과 같다.
 
 ```text
 dma_customerDetail
@@ -348,7 +348,7 @@ Spring Controller
 dma_saveResult
 ```
 
-저장결과 DataMap은 다음과 같이 구성할 수 있습니다.
+저장결과 DataMap은 다음과 같이 구성할 수 있다.
 
 ```text
 dma_saveResult
@@ -368,19 +368,19 @@ dma_saveResult
 }
 ```
 
-프로젝트에 공통 응답 형식이 있다면 `success`, `message` 등을 새로 정의하지 않고 공통 규격을 따라야 합니다.
+프로젝트에 공통 응답 형식이 있다면 `success`, `message` 등을 새로 정의하지 않고 공통 규격을 따라야 한다.
 
 ---
 
 ## 8. 저장 버튼 이벤트
 
-저장 버튼 ID를 다음과 같이 가정하겠습니다.
+저장 버튼 ID를 다음과 같이 가정하겠다.
 
 ```text
 btn_save
 ```
 
-기본 저장 코드는 다음과 같습니다.
+기본 저장 코드는 다음과 같다.
 
 ```javascript
 scwin.btn_save_onclick = function(e) {
@@ -403,7 +403,7 @@ scwin.btn_save_onclick = function(e) {
 };
 ```
 
-처리 순서는 다음과 같습니다.
+처리 순서는 다음과 같다.
 
 ```text
 저장 버튼 클릭
@@ -417,7 +417,7 @@ scwin.btn_save_onclick = function(e) {
 저장 Submission 실행
 ```
 
-금융권 프로젝트에서는 공통함수를 적용해 다음처럼 보일 수도 있습니다.
+금융권 프로젝트에서는 공통함수를 적용해 다음처럼 보일 수도 있다.
 
 ```javascript
 scwin.btn_save_onclick = function(e) {
@@ -438,13 +438,13 @@ scwin.btn_save_onclick = function(e) {
 };
 ```
 
-`com.alert`, `com.confirm`, `com.sbm.execute`는 WebSquare 기본 API가 아니라 프로젝트 공통 라이브러리일 수 있습니다.
+`com.alert`, `com.confirm`, `com.sbm.execute`는 WebSquare 기본 API가 아니라 프로젝트 공통 라이브러리일 수 있다.
 
 ---
 
 ## 9. 서버에 전달되는 Request
 
-Submission의 Reference가 `dma_customerDetail`이므로 서버에는 다음과 같은 데이터가 전달됩니다.
+Submission의 Reference가 `dma_customerDetail`이므로 서버에는 다음과 같은 데이터가 전달된다.
 
 ```json
 {
@@ -457,13 +457,13 @@ Submission의 Reference가 `dma_customerDetail`이므로 서버에는 다음과 
 }
 ```
 
-화면에서 고객번호를 읽기 전용으로 설정했더라도 서버는 전달된 값을 그대로 신뢰하면 안 됩니다. 로그인 사용자 권한과 수정 대상 고객을 서버에서 다시 확인해야 합니다.
+화면에서 고객번호를 읽기 전용으로 설정했더라도 서버는 전달된 값을 그대로 신뢰하면 안 된다. 로그인 사용자 권한과 수정 대상 고객을 서버에서 다시 확인해야 한다.
 
 ---
 
 ## 10. 수정 요청 DTO
 
-저장 용도에 맞는 DTO를 별도로 만드는 것이 좋습니다.
+저장 용도에 맞는 DTO를 별도로 만드는 것이 좋다.
 
 ```java
 @Getter
@@ -483,7 +483,7 @@ public class CustomerUpdateDto {
 }
 ```
 
-조회 DTO 전체를 그대로 UPDATE에 사용하는 것보다 수정 가능한 항목만 명시한 DTO가 안전하고 이해하기 쉽습니다.
+조회 DTO 전체를 그대로 UPDATE에 사용하는 것보다 수정 가능한 항목만 명시한 DTO가 안전하고 이해하기 쉽다.
 
 ```text
 상세조회 DTO
@@ -532,7 +532,7 @@ public class CustomerUpdateResponse {
 }
 ```
 
-실제 프로젝트에 공통 응답 객체가 있다면 다음과 같은 형태가 될 수 있습니다.
+실제 프로젝트에 공통 응답 객체가 있다면 다음과 같은 형태가 될 수 있다.
 
 ```java
 return ApiResponse.success("고객정보가 저장되었습니다.");
@@ -564,9 +564,9 @@ public class CustomerService {
 }
 ```
 
-`@Transactional`은 저장 도중 오류가 발생했을 때 해당 트랜잭션의 DB 변경을 롤백할 수 있게 합니다.
+`@Transactional`은 저장 도중 오류가 발생했을 때 해당 트랜잭션의 DB 변경을 롤백할 수 있게 한다.
 
-예를 들어 고객정보 수정과 변경이력 등록을 함께 처리한다면 두 작업을 하나의 트랜잭션으로 묶을 수 있습니다.
+예를 들어 고객정보 수정과 변경이력 등록을 함께 처리한다면 두 작업을 하나의 트랜잭션으로 묶을 수 있다.
 
 ```java
 @Transactional
@@ -617,7 +617,7 @@ Mapper XML:
 </update>
 ```
 
-MyBatis의 UPDATE 반환값은 일반적으로 영향을 받은 행의 수입니다.
+MyBatis의 UPDATE 반환값은 일반적으로 영향을 받은 행의 수이다.
 
 ```text
 1 → 고객 한 건 수정 성공
@@ -625,13 +625,13 @@ MyBatis의 UPDATE 반환값은 일반적으로 영향을 받은 행의 수입니
 2 이상 → 고객번호 조건이나 데이터 무결성 확인 필요
 ```
 
-고객번호처럼 식별에 사용하는 값은 SQL 문자열 연결이 아니라 `#{customerId}` 형태의 Parameter Binding을 사용합니다.
+고객번호처럼 식별에 사용하는 값은 SQL 문자열 연결이 아니라 `#{customerId}` 형태의 Parameter Binding을 사용한다.
 
 ---
 
 ## 14. 동적 UPDATE를 사용할 때
 
-수정된 항목만 UPDATE해야 하는 업무라면 MyBatis 동적 SQL을 사용할 수 있습니다.
+수정된 항목만 UPDATE해야 하는 업무라면 MyBatis 동적 SQL을 사용할 수 있다.
 
 ```xml
 <update id="updateCustomer">
@@ -652,20 +652,20 @@ MyBatis의 UPDATE 반환값은 일반적으로 영향을 받은 행의 수입니
 </update>
 ```
 
-다만 빈 문자열을 `null`과 동일하게 볼 것인지, 사용자가 값을 의도적으로 지운 것인지 구분해야 합니다.
+다만 빈 문자열을 `null`과 동일하게 볼 것인지, 사용자가 값을 의도적으로 지운 것인지 구분해야 한다.
 
 ```text
 null        → 수정 요청에 포함하지 않음
 빈 문자열 "" → 값을 비우려는 요청일 수 있음
 ```
 
-따라서 동적 UPDATE를 적용할 때는 화면·DTO·SQL의 수정 규칙을 먼저 정해야 합니다.
+따라서 동적 UPDATE를 적용할 때는 화면·DTO·SQL의 수정 규칙을 먼저 정해야 한다.
 
 ---
 
 ## 15. 저장 성공 후 처리
 
-Submission이 정상 완료되면 결과를 확인하고 화면 데이터를 다시 조회합니다.
+Submission이 정상 완료되면 결과를 확인하고 화면 데이터를 다시 조회한다.
 
 ```javascript
 scwin.sbm_saveCustomer_submitdone = function(e) {
@@ -683,14 +683,14 @@ scwin.sbm_saveCustomer_submitdone = function(e) {
 };
 ```
 
-저장 후 재조회하는 이유는 다음과 같습니다.
+저장 후 재조회하는 이유는 다음과 같다.
 
 - DB에 최종 저장된 값을 화면에 다시 반영
 - 서버가 변환하거나 보정한 값 반영
 - 수정 상태를 조회 완료 상태로 초기화
 - 고객목록에도 변경된 정보 반영
 
-목록과 상세조회 순서가 중요한 경우에는 두 Submission을 동시에 실행하지 않고, 상세조회 완료 후 목록조회를 실행하는 등 프로젝트 규칙에 맞게 순서를 제어합니다.
+목록과 상세조회 순서가 중요한 경우에는 두 Submission을 동시에 실행하지 않고, 상세조회 완료 후 목록조회를 실행하는 등 프로젝트 규칙에 맞게 순서를 제어한다.
 
 ---
 
@@ -702,7 +702,7 @@ scwin.sbm_saveCustomer_submiterror = function(e) {
 };
 ```
 
-실무에서는 서버 오류 메시지를 그대로 사용자에게 노출하지 않고 공통 오류처리를 사용하는 경우가 많습니다.
+실무에서는 서버 오류 메시지를 그대로 사용자에게 노출하지 않고 공통 오류처리를 사용하는 경우가 많다.
 
 ```text
 사용자 메시지
@@ -712,7 +712,7 @@ scwin.sbm_saveCustomer_submiterror = function(e) {
 → 예외 종류, SQL 오류, 요청 ID 등 상세내용 기록
 ```
 
-저장 버튼의 중복 클릭을 막기 위해 처리 중에는 버튼을 비활성화하고, 완료 또는 오류 시 다시 활성화할 수도 있습니다.
+저장 버튼의 중복 클릭을 막기 위해 처리 중에는 버튼을 비활성화하고, 완료 또는 오류 시 다시 활성화할 수도 있다.
 
 ```javascript
 scwin.executeSave = function() {
@@ -731,13 +731,13 @@ scwin.sbm_saveCustomer_submiterror = function(e) {
 };
 ```
 
-컴포넌트 활성화·비활성화 API 이름은 WebSquare 버전과 프로젝트 공통 컴포넌트에 따라 확인해야 합니다.
+컴포넌트 활성화·비활성화 API 이름은 WebSquare 버전과 프로젝트 공통 컴포넌트에 따라 확인해야 한다.
 
 ---
 
 ## 17. 동시 수정 문제
 
-사용자 A와 사용자 B가 같은 고객정보를 동시에 조회한 뒤 각각 수정할 수 있습니다.
+사용자 A와 사용자 B가 같은 고객정보를 동시에 조회한 뒤 각각 수정할 수 있다.
 
 ```text
 10:00 사용자 A 상세조회
@@ -746,9 +746,9 @@ scwin.sbm_saveCustomer_submiterror = function(e) {
 10:03 사용자 B 연락처 수정 및 저장
 ```
 
-단순 UPDATE에서는 사용자 B의 저장이 사용자 A의 변경을 덮어쓸 수 있습니다. 중요한 업무라면 버전값이나 최종수정일시를 이용한 낙관적 잠금을 고려합니다.
+단순 UPDATE에서는 사용자 B의 저장이 사용자 A의 변경을 덮어쓸 수 있다. 중요한 업무라면 버전값이나 최종수정일시를 이용한 낙관적 잠금을 고려한다.
 
-조회 응답에 버전을 포함합니다.
+조회 응답에 버전을 포함한다.
 
 ```json
 {
@@ -758,7 +758,7 @@ scwin.sbm_saveCustomer_submiterror = function(e) {
 }
 ```
 
-UPDATE 조건에 버전을 추가합니다.
+UPDATE 조건에 버전을 추가한다.
 
 ```xml
 <update id="updateCustomer">
@@ -771,14 +771,14 @@ UPDATE 조건에 버전을 추가합니다.
 </update>
 ```
 
-UPDATE 결과가 0건이면 다른 사용자가 먼저 수정했을 가능성이 있으므로 다음과 같이 안내할 수 있습니다.
+UPDATE 결과가 0건이면 다른 사용자가 먼저 수정했을 가능성이 있으므로 다음과 같이 안내할 수 있다.
 
 ```text
 다른 사용자가 먼저 고객정보를 변경했습니다.
 최신 정보를 다시 조회한 후 수정해주세요.
 ```
 
-단순 학습 예제에서는 생략할 수 있지만 금융권과 관리자 화면에서는 중요한 개념입니다.
+단순 학습 예제에서는 생략할 수 있지만 금융권과 관리자 화면에서는 중요한 개념이다.
 
 ---
 
@@ -928,7 +928,7 @@ public interface CustomerMapper {
 
 ## 20. React와 비교
 
-React에서는 다음과 같은 형태가 될 수 있습니다.
+React에서는 다음과 같은 형태가 될 수 있다.
 
 ```javascript
 const saveCustomer = async () => {
@@ -944,7 +944,7 @@ const saveCustomer = async () => {
 };
 ```
 
-WebSquare와 대응하면 다음과 같습니다.
+WebSquare와 대응하면 다음과 같다.
 
 | React | WebSquare |
 |---|---|
@@ -958,7 +958,7 @@ WebSquare와 대응하면 다음과 같습니다.
 
 ## 21. 실무 소스 추적 순서
 
-처음 보는 저장 기능은 다음 순서로 확인합니다.
+처음 보는 저장 기능은 다음 순서로 확인한다.
 
 ```text
 저장 버튼 ID
@@ -984,7 +984,7 @@ submitdone / submiterror
 저장 후 재조회
 ```
 
-확인해야 할 질문은 다음과 같습니다.
+확인해야 할 질문은 다음과 같다.
 
 1. 어느 항목까지 수정할 수 있는가?
 2. 저장 전에 어떤 검증을 하는가?
@@ -1047,7 +1047,7 @@ $p.executeSubmission(sbm_searchCustomerDetail);
 $p.executeSubmission(sbm_searchCustomer);
 ```
 
-한 줄로 정리하면 다음과 같습니다.
+한 줄로 정리하면 다음과 같다.
 
 ```text
 DataMap 수정 → 검증 → 저장 Submission → @Transactional → UPDATE → 재조회
@@ -1057,7 +1057,7 @@ DataMap 수정 → 검증 → 저장 Submission → @Transactional → UPDATE �
 
 ## 24. 다음 학습 단계
 
-이번 수정·저장 흐름 다음에는 신규 고객 등록을 학습하면 좋습니다.
+이번 수정·저장 흐름 다음에는 신규 고객 등록을 학습하면 좋다.
 
 ```text
 신규 버튼
@@ -1077,7 +1077,7 @@ Spring INSERT
 목록 재조회
 ```
 
-그다음 삭제까지 연결하면 고객관리 CRUD가 완성됩니다.
+그다음 삭제까지 연결하면 고객관리 CRUD가 완성된다.
 
 ```text
 Create → 신규 등록
