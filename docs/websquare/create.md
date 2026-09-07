@@ -571,7 +571,7 @@ public int createCustomer(CustomerCreateDto createDto) {
 
 `CustomerMapper`에 다음과 같이 추가합니다.
 
-```java id="cmap01"
+```java
 @Mapper
 public interface CustomerMapper {
 
@@ -589,7 +589,7 @@ public interface CustomerMapper {
 
 `CustomerMapper.xml`에 다음 조회 SQL을 추가합니다.
 
-```xml id="cmap02"
+```xml
 <select id="existsByPhone"
         parameterType="String"
         resultType="int">
@@ -605,14 +605,14 @@ public interface CustomerMapper {
 
 조회 결과는 다음과 같습니다.
 
-```text id="cmap03"
+```text
 0       → 동일한 연락처 없음
 1 이상  → 동일한 연락처 있음
 ```
 
 따라서 Service에서는 다음 조건으로 중복 여부를 확인할 수 있습니다.
 
-```java id="cmap04"
+```java
 if (customerMapper.existsByPhone(
         createDto.getPhone()) > 0) {
 
@@ -624,7 +624,7 @@ if (customerMapper.existsByPhone(
 
 처리 흐름은 다음과 같습니다.
 
-```text id="cmap05"
+```text
 고객 등록 요청
     ↓
 existsByPhone(phone)
