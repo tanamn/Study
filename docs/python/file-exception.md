@@ -306,34 +306,80 @@ with open("purchase_history.txt", "a", encoding="utf-8") as file:
 
 ## 13. 메모 작성 날짜와 시간을 함께 저장
 
-1. 현재 날짜와 시간 가져오기
+메모를 저장할 때 작성 날짜와 시간을 함께 기록하면 언제 작성한 메모인지 확인할 수 있어. Python의 `datetime` 모듈을 사용하면 현재 날짜와 시간을 가져올 수 있어.
+
+### 13.1 현재 날짜와 시간 가져오기
 
 ```python
-   ##출력 형식을 보기 좋게 바꾸려면 strftime()을 사용
-   from datetime import datetimenow = datetime.now()
-   formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
-   print(formatted_time)
+from datetime import datetime
 
+now = datetime.now()
+
+print(now)
 ```
 
-2. 실행 결과 확인하기
+실행 결과 예시:
 
-datetime.now() 실행 결과 예시:
+```text
 2026-10-26 16:25:30.123456
+```
 
-now.strftime("%Y-%m-%d %H:%M:%S") 실행 결과 예시:
+`datetime.now()`는 현재 날짜와 시간을 가져와. 출력 형식을 보기 좋게 바꾸려면 `strftime()`을 사용하면 돼.
+
+```python
+from datetime import datetime
+
+now = datetime.now()
+formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+print(formatted_time)
+```
+
+실행 결과 예시:
+
+```text
 2026-10-26 16:25:30
+```
 
-3. 날짜와 시간 형식 참고
+### 13.2 날짜와 시간 형식 알아보기
 
 날짜와 시간 형식은 다음과 같아.
-코드	의미	예시
-%Y	연도 4자리	2026
-%m	월	10
-%d	일	26
-%H	24시간제 시	16
-%M	분	25
-%S	초	30
+
+| 코드 | 의미 | 예시 |
+|---|---|---|
+| `%Y` | 연도 4자리 | `2026` |
+| `%m` | 월 | `10` |
+| `%d` | 일 | `26` |
+| `%H` | 24시간제 시 | `16` |
+| `%M` | 분 | `25` |
+| `%S` | 초 | `30` |
+
+### 13.3 메모 저장 프로그램에 적용하기
+
+기존 `save_memo()` 함수에서 현재 날짜와 시간을 가져온 다음, 메모 내용과 함께 파일에 저장하면 돼.
+
+```python
+from datetime import datetime
+
+now = datetime.now()
+formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+with open("memo.txt", "a", encoding="utf-8") as file:
+    file.write(f"[{formatted_time}] 오늘 Python을 공부했다.\n")
+```
+
+저장 결과 예시:
+
+```text
+[2026-10-26 16:25:30] 오늘 Python을 공부했다.
+```
+
+**핵심 정리**
+
+- `datetime.now()` : 현재 날짜와 시간을 가져와.
+- `strftime()` : 날짜와 시간을 원하는 문자열 형식으로 변환해.
+- `\n` : 파일에 내용을 쓸 때 줄을 바꿔 줘.
+- `"a"` : 기존 파일의 내용을 유지하면서 새로운 메모를 뒤에 추가해.
 
 
 
