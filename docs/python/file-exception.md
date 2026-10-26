@@ -307,6 +307,7 @@ with open("purchase_history.txt", "a", encoding="utf-8") as file:
 ## 13. 메모 작성 날짜와 시간을 함께 저장
 
 1. 현재 날짜와 시간 가져오기
+
 ```python
    ##출력 형식을 보기 좋게 바꾸려면 strftime()을 사용
    from datetime import datetimenow = datetime.now()
@@ -316,6 +317,7 @@ with open("purchase_history.txt", "a", encoding="utf-8") as file:
 ```
 
 2. 실행 결과 확인하기
+
 datetime.now() 실행 결과 예시:
 2026-10-26 16:25:30.123456
 
@@ -323,6 +325,7 @@ now.strftime("%Y-%m-%d %H:%M:%S") 실행 결과 예시:
 2026-10-26 16:25:30
 
 3. 날짜와 시간 형식 참고
+
 날짜와 시간 형식은 다음과 같아.
 코드	의미	예시
 %Y	연도 4자리	2026
