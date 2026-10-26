@@ -1,3 +1,9 @@
+---
+layout: default
+title: 리스트와 딕셔너리
+permalink: /python/list-dictionary/
+---
+
 # 리스트와 딕셔너리
 
 리스트와 딕셔너리는 여러 데이터를 저장하고 관리하는 대표적인 자료구조입니다.

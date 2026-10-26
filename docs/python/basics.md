@@ -1,3 +1,9 @@
+---
+layout: default
+title: Python 기본 문법
+permalink: /python/basics/
+---
+
 # Python 기본 구조
 
 ## 1. Python이란?
