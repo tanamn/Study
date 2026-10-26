@@ -4,6 +4,8 @@ title: 함수와 입력값 검증
 permalink: /python/functions/
 ---
 
+{% include navigation.html %}
+
 # 함수와 입력값 검증
 
 함수는 특정 작업을 수행하는 코드 블록입니다. 반복되는 기능을 함수로 분리하면 재사용성과 가독성을 높일 수 있습니다.

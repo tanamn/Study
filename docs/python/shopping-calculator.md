@@ -4,6 +4,8 @@ title: 상품 구매 계산 프로그램
 permalink: /python/shopping-calculator/
 ---
 
+{% include navigation.html %}
+
 # 상품 구매 계산 프로그램
 
 이 문서는 Python 기본 문법, 리스트와 딕셔너리, 함수, 입력값 검증을 종합한 실습 프로그램을 정리합니다.

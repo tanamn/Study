@@ -4,6 +4,8 @@ title: 조건문과 반복문
 permalink: /python/control-flow/
 ---
 
+{% include navigation.html %}
+
 # 조건문과 반복문
 
 조건문은 조건에 따라 실행할 코드를 선택하고, 반복문은 코드를 여러 번 실행합니다.
