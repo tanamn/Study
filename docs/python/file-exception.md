@@ -304,6 +304,36 @@ with open("purchase_history.txt", "a", encoding="utf-8") as file:
 4. 상품 구매 계산 프로그램의 구매 내역을 `purchase_history.txt`에 저장합니다.
 5. 숫자 입력에서 발생하는 `ValueError`와 파일 읽기에서 발생하는 `FileNotFoundError`를 각각 직접 재현하고 처리 결과를 확인합니다.
 
-## 13. 다음 학습 주제
+## 13. 메모 작성 날짜와 시간을 함께 저장
+
+1. 현재 날짜와 시간 가져오기
+```python
+   ##출력 형식을 보기 좋게 바꾸려면 strftime()을 사용
+   from datetime import datetimenow = datetime.now()
+   formatted_time = now.strftime("%Y-%m-%d %H:%M:%S")
+   print(formatted_time)
+
+```
+
+2. 실행 결과 확인하기
+datetime.now() 실행 결과 예시:
+2026-10-26 16:25:30.123456
+
+now.strftime("%Y-%m-%d %H:%M:%S") 실행 결과 예시:
+2026-10-26 16:25:30
+
+3. 날짜와 시간 형식 참고
+날짜와 시간 형식은 다음과 같아.
+코드	의미	예시
+%Y	연도 4자리	2026
+%m	월	10
+%d	일	26
+%H	24시간제 시	16
+%M	분	25
+%S	초	30
+
+
+
+## 14. 다음 학습 주제
 
 다음 단계에서는 코드를 여러 파일로 나누고 재사용하는 **모듈과 패키지**를 학습합니다.
