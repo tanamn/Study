@@ -285,6 +285,91 @@ if __name__ == "__main__":
 3. 각각의 코드를 붙여 넣고 저장해.
 4. VS Code 터미널에서 `main.py`가 있는 폴더로 이동한 다음 실행해.
 
+### 10.5 여러 줄의 메모 입력받기
+
+지금까지는 `input()`을 한 번 호출해 메모를 한 줄씩 입력받았어. 여러 줄로 된 메모를 저장하려면 `input()`을 반복해서 호출하고, 입력이 끝나는 조건을 지정하면 돼.
+
+#### 10.5.1 여러 줄 입력받기
+
+```python
+def input_multiline_memo():
+    print("메모를 입력하세요.")
+    print("입력을 마치려면 exit를 입력하세요.")
+
+    lines = []
+
+    while True:
+        line = input()
+
+        if line.lower() == "exit":
+            break
+
+        lines.append(line)
+
+    if not lines:
+        print("저장할 메모가 없습니다.")
+        return ""
+
+    return "\n".join(lines)
+```
+
+#### 10.5.2 코드 이해하기
+
+- `lines = []`: 입력받은 각 줄을 저장할 리스트를 만들어.
+- `while True`: 사용자가 입력을 종료할 때까지 반복해.
+- `input()`: 한 줄을 입력받아.
+- `if line.lower() == "exit"`: 대소문자와 관계없이 `exit`를 입력하면 반복문을 종료해.
+- `lines.append(line)`: 입력한 한 줄을 리스트에 추가해.
+- `"\n".join(lines)`: 리스트에 저장된 여러 줄을 줄바꿈 문자로 연결해 하나의 문자열로 만들어.
+- `return`: 완성된 메모 내용을 호출한 함수로 반환해.
+
+#### 10.5.3 실행 결과 확인하기
+
+```text
+메모를 입력하세요.
+입력을 마치려면 exit를 입력하세요.
+오늘 Python을 공부했다.
+모듈과 패키지를 학습했다.
+파일 입출력도 복습했다.
+exit
+```
+
+입력한 메모는 다음과 같은 문자열로 만들어져.
+
+```text
+오늘 Python을 공부했다.
+모듈과 패키지를 학습했다.
+파일 입출력도 복습했다.
+```
+
+#### 10.5.4 기존 메모 저장 함수에 적용하기
+
+기존 `save_memos()` 함수에서 한 줄 입력 코드를 다음과 같이 변경할 수 있어.
+
+```python
+memo = input_multiline_memo()
+
+if not memo:
+    print("저장할 메모가 없습니다.")
+    return False
+```
+
+그리고 `memo_manager.py`의 함수 상단에 `input_multiline_memo()` 함수를 정의해 줘.
+
+파일에 저장하는 코드는 다음과 같이 작성하면 돼.
+
+```python
+with open(FILE_NAME, "a", encoding="utf-8") as file:
+    file.write(f"메모 저장 일시: [{format_now}]\n")
+    file.write(memo + "\n")
+    file.write("--------------------\n")
+```
+
+`"a"` 모드를 사용하므로 기존 메모를 유지하면서 새 메모를 뒤에 추가할 수 있어.
+
+**주의:** 이 예제에서는 `exit`를 입력 종료 명령으로 사용해. 따라서 메모 내용으로 `exit`만 입력한 한 줄은 저장할 수 없어. 또한 `input_multiline_memo()` 함수는 `save_memos()` 함수보다 먼저 정의하거나, 같은 모듈 안에 정의해 두어야 해.
+
+
 ```bash
 python main.py
 ```
