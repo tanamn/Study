@@ -46,6 +46,38 @@ System.out.println(total); // 4500.0
 
 금융 등 금액 계산에서는 부동소수점 오차를 피하기 위해 업무 요건에 따라 `BigDecimal`을 사용하는 경우가 많습니다.
 
+### BigDecimal로 정밀한 숫자 계산하기
+
+`double`은 일부 소수를 정확히 표현하지 못하므로 금액·이자·수수료 계산에는 `BigDecimal`이 적합합니다.
+
+```java
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+BigDecimal a = new BigDecimal("0.1");
+BigDecimal b = new BigDecimal("0.2");
+
+System.out.println(a.add(b)); // 0.3
+
+BigDecimal result = new BigDecimal("100")
+        .divide(new BigDecimal("3"), 2, RoundingMode.HALF_UP);
+
+System.out.println(result); // 33.33
+```
+
+- **생성:** `new BigDecimal("0.1")`처럼 문자열로 생성합니다. `new BigDecimal(0.1)`은 피하는 것이 좋습니다.
+- **연산:** `add()`, `subtract()`, `multiply()`, `divide()`를 사용합니다.
+- **반올림:** 나눗셈은 자릿수와 `RoundingMode`를 업무 규칙에 맞게 지정합니다.
+- **비교:** 숫자 값 비교에는 `compareTo()`를 사용합니다. `equals()`는 소수점 자릿수(scale)도 비교합니다.
+- **불변 객체:** 연산 결과는 새 객체이므로 결과를 변수에 저장해야 합니다.
+
+```java
+BigDecimal balance = new BigDecimal("100.0");
+BigDecimal minimum = new BigDecimal("100.00");
+
+System.out.println(balance.compareTo(minimum) == 0); // true
+```
+
 ## 3. 연산자
 
 - 산술: `+`, `-`, `*`, `/`, `%`
