@@ -20,7 +20,6 @@ permalink: /
 ---
 
 ## WebSquare 학습 과정
-
 - [고객조회 기본]({{ '/websquare/search/' | relative_url }})
 - [상세정보 수정]({{ '/websquare/edit/' | relative_url }})
 - [신규 고객 등록]({{ '/websquare/create/' | relative_url }})
@@ -29,14 +28,23 @@ permalink: /
 - [공통 메시지·Submission 분석]({{ '/websquare/common/' | relative_url }})
 - [트랜잭션과 예외 처리]({{ '/websquare/transaction/' | relative_url }})
 
-## Spring 학습 과정
 
+## Java 학습 과정
+- [Java 기본 문법]({{ '/java/basics/' | relative_url }})
+- [클래스와 객체]({{ '/java/classes-objects/' | relative_url }})
+- [컬렉션]({{ '/java/collections/' | relative_url }})
+- [예외 처리]({{ '/java/exceptions/' | relative_url }})
+- [JDBC]({{ '/java/jdbc/' | relative_url }})
+
+
+## Spring 학습 과정
 - [Spring 기본 구조]({{ '/spring/spring/' | relative_url }})
 - [Controller]({{ '/spring/controller/' | relative_url }})
 - [Service]({{ '/spring/service/' | relative_url }})
 - [Repository와 Mapper]({{ '/spring/repository-mapper/' | relative_url }})
 - [트랜잭션]({{ '/spring/transaction/' | relative_url }})
 - [프론트엔드 프레임워크에 따른 Spring API 설계]({{ '/spring/frontend-integration/' | relative_url }})
+
 
 ## Python 학습 과정
 - [Python 기본 문법]({{ '/python/basics/' | relative_url }})
