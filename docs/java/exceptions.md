@@ -82,9 +82,9 @@ if (balance < amount) {
 
 ## 학습 체크
 
-- [ ] Checked Exception과 Unchecked Exception을 구분할 수 있다.
-- [ ] `throw`와 `throws`의 차이를 설명할 수 있다.
-- [ ] 예외를 로그로 남기고 다시 전달하는 이유를 설명할 수 있다.
-- [ ] Spring 트랜잭션의 롤백 정책과 예외의 관계를 설명할 수 있다.
+- Checked Exception과 Unchecked Exception을 구분할 수 있다.
+- `throw`와 `throws`의 차이를 설명할 수 있다.
+- 예외를 로그로 남기고 다시 전달하는 이유를 설명할 수 있다.
+- Spring 트랜잭션의 롤백 정책과 예외의 관계를 설명할 수 있다.
 
 [이전: 컬렉션]({{ '/java/collections/' | relative_url }}) · [다음: JDBC]({{ '/java/jdbc/' | relative_url }})

@@ -96,9 +96,9 @@ Spring에서는 일반적으로 `@Transactional`을 사용해 트랜잭션 경�
 
 ## 학습 체크
 
-- [ ] `Connection`, `PreparedStatement`, `ResultSet`의 역할을 설명할 수 있다.
-- [ ] `executeQuery()`와 `executeUpdate()`의 차이를 설명할 수 있다.
-- [ ] SQL 파라미터 바인딩이 필요한 이유를 설명할 수 있다.
-- [ ] JDBC의 커밋·롤백과 Spring의 `@Transactional`을 연결해 설명할 수 있다.
+- `Connection`, `PreparedStatement`, `ResultSet`의 역할을 설명할 수 있다.
+- `executeQuery()`와 `executeUpdate()`의 차이를 설명할 수 있다.
+- SQL 파라미터 바인딩이 필요한 이유를 설명할 수 있다.
+- JDBC의 커밋·롤백과 Spring의 `@Transactional`을 연결해 설명할 수 있다.
 
 [이전: 예외 처리]({{ '/java/exceptions/' | relative_url }}) · [Java 학습 목차]({{ '/java/' | relative_url }})
