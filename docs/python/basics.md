@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Python 기본 문법
+title: Python 기본 구조
 permalink: /python/basics/
 ---
 

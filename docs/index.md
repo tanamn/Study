@@ -47,7 +47,7 @@ permalink: /
 
 
 ## Python 학습 과정
-- [Python 기본 문법]({{ '/python/basics/' | relative_url }})
+- [Python 기본 구조]({{ '/python/basics/' | relative_url }})
 - [조건문과 반복문]({{ '/python/control-flow/' | relative_url }})
 - [리스트와 딕셔너리]({{ '/python/list-dictionary/' | relative_url }})
 - [함수와 입력값 검증]({{ '/python/functions/' | relative_url }})
