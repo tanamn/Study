@@ -279,28 +279,16 @@ public class AccountManagementApplication {
 
 ## 11. 학습 진행 체크리스트
 
-- [ ] Java 17 설치 및 버전 확인
-- [ ] VS Code Java 확장 기능 설치 확인
-- [ ] Spring Initializr 프로젝트 생성
-- [ ] VS Code에서 프로젝트 열기
-- [ ] Spring Boot 기본 애플리케이션 실행
-- [ ] H2 데이터베이스 연결
-- [ ] 계좌 테이블 및 초기 데이터 생성
-- [ ] DTO 작성
-- [ ] MyBatis Mapper 인터페이스 작성
-- [ ] Mapper XML에 SQL 작성
-- [ ] Service 작성
-- [ ] Controller 작성
-- [ ] Postman으로 API 테스트
-
-## 12. 다음 학습 단계
-
-첫 번째 목표는 **프로젝트 생성과 기본 애플리케이션 실행**까지다.
-
-먼저 VS Code 터미널에서 다음 명령어를 실행해 현재 Java 버전을 확인한다.
-
-```bash
-java -version
-```
-
-출력 결과를 확인한 다음 H2 설정과 계좌 테이블 생성 단계로 진행한다. 환경 확인이 끝나기 전에는 다음 단계의 설정을 서두르지 않는다.
+- Java 17 설치 및 버전 확인
+- VS Code Java 확장 기능 설치 확인
+- Spring Initializr 프로젝트 생성
+- VS Code에서 프로젝트 열기
+- Spring Boot 기본 애플리케이션 실행
+- H2 데이터베이스 연결
+- 계좌 테이블 및 초기 데이터 생성
+- DTO 작성
+- MyBatis Mapper 인터페이스 작성
+- Mapper XML에 SQL 작성
+- Service 작성
+- Controller 작성
+- Postman으로 API 테스트
