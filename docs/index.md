@@ -44,6 +44,7 @@ permalink: /
 - [Repository와 Mapper]({{ '/spring/repository-mapper/' | relative_url }})
 - [트랜잭션]({{ '/spring/transaction/' | relative_url }})
 - [프론트엔드 프레임워크에 따른 Spring API 설계]({{ '/spring/frontend-integration/' | relative_url }})
+- [Spring Boot 프로그램 구현 예제]({{ '/spring/spring-boot-account-practice/' | relative_url }})
 
 
 ## Python 학습 과정
