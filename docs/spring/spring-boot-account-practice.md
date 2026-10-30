@@ -6,7 +6,7 @@ permalink: /spring/spring-boot-account-practice/
 
 {% include navigation.html %}
 
-# Spring Boot 프로그램 구현하기 예제 - VS Code로 Spring Boot 계좌 관리 프로그램 구현하기
+# VS Code로 Spring Boot 계좌 관리 프로그램 구현하기
 
 ## 1. 학습 목표
 
