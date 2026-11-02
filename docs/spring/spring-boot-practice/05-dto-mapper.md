@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 5단계 - DTO 및 MyBatis Mapper 인터페이스
-permalink: /spring/account-practice/05-dto-mapper/
+permalink: /spring/spring-boot-practice/05-dto-mapper/
 ---
 
 {% include navigation.html %}

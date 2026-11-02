@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 6단계 - Mapper XML 및 Service 작성
-permalink: /spring/account-practice/06-mapper-xml-service/
+permalink: /spring/spring-boot-practice/06-mapper-xml-service/
 ---
 
 {% include navigation.html %}

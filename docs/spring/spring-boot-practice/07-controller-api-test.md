@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 7단계 - Controller 및 Postman API 테스트
-permalink: /spring/account-practice/07-controller-api-test/
+permalink: /spring/spring-boot-practice/07-controller-api-test/
 ---
 
 {% include navigation.html %}

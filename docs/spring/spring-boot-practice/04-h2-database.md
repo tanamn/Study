@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 4단계 - H2 연결 및 계좌 테이블 생성
-permalink: /spring/account-practice/04-h2-database/
+permalink: /spring/spring-boot-practice/04-h2-database/
 ---
 
 {% include navigation.html %}

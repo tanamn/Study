@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 1단계 - Java 및 VS Code 환경 확인
-permalink: /spring/account-practice/01-java-vscode/
+permalink: /spring/spring-boot-practice/01-java-vscode/
 ---
 
 {% include navigation.html %}

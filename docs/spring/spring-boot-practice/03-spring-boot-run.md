@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 3단계 - Spring Boot 기본 애플리케이션 실행
-permalink: /spring/account-practice/03-spring-boot-run/
+permalink: /spring/spring-boot-practice/03-spring-boot-run/
 ---
 
 {% include navigation.html %}
