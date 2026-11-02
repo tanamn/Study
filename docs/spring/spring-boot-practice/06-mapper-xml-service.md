@@ -107,10 +107,10 @@ Service는 Controller와 Mapper 사이에서 업무 로직을 처리한다. 실�
 
 ## 완료 체크
 
-- [ ] Mapper XML 생성
-- [ ] namespace와 Mapper 인터페이스 경로 일치
-- [ ] SQL id와 Java 메서드명 일치
-- [ ] Service 작성
+- Mapper XML 생성
+- namespace와 Mapper 인터페이스 경로 일치
+- SQL id와 Java 메서드명 일치
+- Service 작성
 
 ## 다음 단계
 

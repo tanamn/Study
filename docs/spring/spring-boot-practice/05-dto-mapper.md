@@ -88,9 +88,9 @@ public interface AccountMapper {
 
 ## 완료 체크
 
-- [ ] dto 패키지 및 AccountDto 작성
-- [ ] mapper 패키지 및 AccountMapper 작성
-- [ ] 실제 프로젝트 패키지명과 package 선언 일치 확인
+- dto 패키지 및 AccountDto 작성
+- mapper 패키지 및 AccountMapper 작성
+- 실제 프로젝트 패키지명과 package 선언 일치 확인
 
 ## 다음 단계
 
