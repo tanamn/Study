@@ -319,17 +319,17 @@ H2 콘솔은 개발 및 테스트 용도이다. 실제 운영 환경에서는 �
 
 ## 4.12 4단계 완료 체크
 
-- [ ] `application.yml`에 H2 데이터베이스 연결 정보 작성
-- [ ] `application.yml`에 H2 콘솔 경로 설정
-- [ ] `application.yml`에 SQL 초기화 및 UTF-8 인코딩 설정
-- [ ] `pom.xml`에 `spring-boot-h2console` 의존성 추가
-- [ ] `schema.sql`에 ACCOUNT 테이블 생성 SQL 작성
-- [ ] `data.sql`에 계좌 초기 데이터 3건 입력
-- [ ] `schema.sql`, `data.sql`을 UTF-8로 저장
-- [ ] `mvn spring-boot:run`으로 애플리케이션 실행
-- [ ] H2 콘솔 로그인 성공
-- [ ] H2 콘솔에서 ACCOUNT 테이블 확인
-- [ ] 계좌 데이터 3건 및 한글이 정상 조회되는지 확인
+- `application.yml`에 H2 데이터베이스 연결 정보 작성
+- `application.yml`에 H2 콘솔 경로 설정
+- `application.yml`에 SQL 초기화 및 UTF-8 인코딩 설정
+- `pom.xml`에 `spring-boot-h2console` 의존성 추가
+- `schema.sql`에 ACCOUNT 테이블 생성 SQL 작성
+- `data.sql`에 계좌 초기 데이터 3건 입력
+- `schema.sql`, `data.sql`을 UTF-8로 저장
+- `mvn spring-boot:run`으로 애플리케이션 실행
+- H2 콘솔 로그인 성공
+- H2 콘솔에서 ACCOUNT 테이블 확인
+- 계좌 데이터 3건 및 한글이 정상 조회되는지 확인
 
 ## 다음 단계
 
