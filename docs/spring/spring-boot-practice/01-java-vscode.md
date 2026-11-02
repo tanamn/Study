@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 1단계 - Java 17 및 VS Code 환경 확인
+title: 1단계 - Java 및 VS Code 환경 확인
 permalink: /spring/account-practice/01-java-vscode/
 ---
 
 {% include navigation.html %}
 
-# 1단계. Java 17 및 VS Code 환경 확인
+# 1단계. Java 및 VS Code 환경 확인
 
 ## 1. Java 버전 확인
 
