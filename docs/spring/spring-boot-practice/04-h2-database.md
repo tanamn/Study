@@ -106,7 +106,7 @@ server:
 
 ## 4.4 H2 콘솔 의존성 확인
 
-Spring Boot 4.x에서는 H2 웹 콘솔 기능이 별도 모듈로 제공된다. `pom.xml`의 `<dependencies>` 영역에 다음 의존성을 추가한다.
+Spring Boot 4.x에서는 H2 웹 콘솔 기능이 별도 모듈로 제공된다. `pom.xml`의 `<dependencies>` 영역에 다음 의존성이 없을 경우 추가한다.
 
 ```xml
 <dependency>
