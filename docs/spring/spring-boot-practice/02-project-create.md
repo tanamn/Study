@@ -38,7 +38,7 @@ Spring Initializr는 Spring Boot 프로젝트의 기본 구조와 의존성(Depe
 
 아래는 이번 실습에서 실제로 설정한 Spring Initializr 화면이다.
 
-![Spring Initializr 프로젝트 초기값 설정]({{ '/assets/images/spring-initializr-account-management.png' | relative_url }})
+![Spring Initializr 프로젝트 초기값 설정]{{ '/assets/images/spring-initializr-account-management.png' | relative_url }}
 
 ### ③ 주요 설정 항목 이해하기
 
