@@ -10,7 +10,7 @@ permalink: /spring/spring-boot-practice/03-spring-boot-run/
 
 이번 단계에서는 Spring Initializr로 생성한 `account-management` 프로젝트를 빌드하고 실행한다. 실행 로그와 브라우저 접속을 통해 Spring Boot와 내장 Tomcat 웹 서버가 정상적으로 동작하는지 확인한다.
 
-## 3.0. 실행 전 시작 클래스 확인
+## 실행 전 시작 클래스 확인
 
 Initializr가 생성한 `src/main/java` 아래의 시작 클래스를 확인한다. Group과 Artifact 설정에 따라 실제 패키지명은 달라질 수 있다.
 
