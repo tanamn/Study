@@ -69,35 +69,149 @@ permalink: /spring/spring-boot-practice/06-mapper-xml-service/
 ```java
 package com.example.accountmanagement.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.accountmanagement.dto.AccountDto;
 import com.example.accountmanagement.mapper.AccountMapper;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AccountService {
 
     private final AccountMapper accountMapper;
 
-    public AccountService(AccountMapper accountMapper) {
-        this.accountMapper = accountMapper;
-    }
+    // public AccountService(AccountMapper accountMapper) {
+    //     this.accountMapper = accountMapper;
+    // }
 
+    // 1. 계좌 리스트 조회
+    @Transactional(readOnly = true) 
     public List<AccountDto> findAll() {
         return accountMapper.findAll();
     }
 
+    // 2. 게좌 번호로 계좌 조회
     public AccountDto findByAccountNo(String accountNo) {
-        return accountMapper.findByAccountNo(accountNo);
+
+        validateAccountNo(accountNo);
+        AccountDto accountDto = accountMapper.findByAccountNo(accountNo);
+
+        if (accountDto == null) {
+            throw new IllegalArgumentException("존재하지 않는 계좌입니다");
+        }
+
+        return accountDto;
     }
 
-    public int create(AccountDto account) {
-        return accountMapper.insert(account);
+    // 3. 계좌 생성
+    @Transactional
+    public int createAccount(AccountDto accountDto) {
+
+        // 계좌 정보 유효성 검사
+        validateAccount(accountDto);
+
+        // 계좌 번호 null check
+        if (accountDto.getAccountNo() == null || accountDto.getAccountNo().isEmpty()) {
+            throw new IllegalArgumentException("계좌 번호는 필수 입력 항목입니다");
+        }
+
+        // 계좌 번호 중복 체크
+        AccountDto existingAccount = accountMapper.findByAccountNo(accountDto.getAccountNo());
+        if (existingAccount != null) {
+            throw new IllegalArgumentException("이미 등록된 계좌입니다");
+        }
+
+        // 계좌 생성
+        int result = accountMapper.insertAccount(accountDto);
+        if (result != 1) {
+            throw new RuntimeException("계좌 생성에 실패했습니다");
+        }
+
+        return result;
     }
 
-    public int update(AccountDto account) {
-        return accountMapper.update(account);
+    // 4. 계좌 정보 수정
+    @Transactional
+    public int updateAccount(String accountNo, AccountDto accountDto) {
+
+        // 계좌번호 확인
+        validateAccountNo(accountNo);
+
+        // 계좌 정보 null check
+        if (accountDto == null) {
+            throw new IllegalArgumentException(
+                "수정할 계좌 정보가 필요합니다."
+            );
+        }        
+
+        // 수정 대상 계좌가 존재하는지 확인
+        AccountDto existingAccount = accountMapper.findByAccountNo(accountNo);
+        if (existingAccount == null) {
+            throw new IllegalArgumentException("수정할 계좌가 존재하지 않습니다");
+        }
+
+        // 계좌 번호는 수정 불가, 기존 계좌 번호를 유지
+        accountDto.setAccountNo(existingAccount.getAccountNo()); 
+
+        // 계좌 정보 유효성 검사
+        validateAccount(accountDto);
+
+        // 계좌 정보 수정
+        int result = accountMapper.updateAccount(accountDto);
+        if (result != 1) {
+            throw new RuntimeException("계좌 정보 수정에 실패했습니다");
+        }
+
+        return result;
     }
+
+    // 계좌번호 공통 검증
+    private void validateAccountNo(String accountNo) {
+
+        if (accountNo == null || accountNo.isBlank()) {
+            throw new IllegalArgumentException(
+                "계좌번호를 입력해 주세요."
+            );
+        }
+    }
+
+    // 계좌 정보 공통 검증
+    private void validateAccount(AccountDto accountDto) {
+
+        if (accountDto == null) {
+            throw new IllegalArgumentException(
+                "계좌 정보가 필요합니다."
+            );
+        }
+
+        validateAccountNo(accountDto.getAccountNo());
+
+        if (accountDto.getAccountName() == null ||
+            accountDto.getAccountName().isBlank()) {
+            throw new IllegalArgumentException(
+                "계좌명을 입력해 주세요."
+            );
+        }
+
+        if (accountDto.getCustomerName() == null ||
+            accountDto.getCustomerName().isBlank()) {
+            throw new IllegalArgumentException(
+                "예금주를 입력해 주세요."
+            );
+        }
+
+        if (accountDto.getBalance() == null ||
+            accountDto.getBalance().compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException(
+                "계좌 잔액이 올바르지 않습니다."
+            );
+        }
+    }    
 }
 ```
 
