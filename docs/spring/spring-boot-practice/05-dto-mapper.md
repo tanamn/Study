@@ -467,6 +467,7 @@ public interface AccountMapper {
 
 ## 다음 단계
 
+[6단계 - Mapper XML 및 Service 작성](../06-mapper-xml-service/)
 6단계에서는 `AccountMapper.xml`에 실제 SQL을 작성하고, Service 계층에서 Mapper를 호출하는 방법을 학습한다. 이때 Service 클래스에서 `@RequiredArgsConstructor`를 사용해 Spring의 생성자 주입도 함께 확인한다.
 
 ## 참고 자료
