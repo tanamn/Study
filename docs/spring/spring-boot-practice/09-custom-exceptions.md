@@ -360,16 +360,16 @@ AccountService
 
 ## 9.9 이번 단계 완료 체크
 
-- [ ] `AccountNotFoundException.java` 생성
-- [ ] `DuplicateAccountException.java` 생성
-- [ ] `GlobalExceptionHandler.java` 수정
-- [ ] Service의 계좌 미존재 예외 변경
-- [ ] Service의 중복 계좌 예외 변경
-- [ ] 잘못된 입력값 테스트: HTTP 400
-- [ ] 존재하지 않는 계좌 조회 테스트: HTTP 404
-- [ ] 중복 계좌 등록 테스트: HTTP 409
-- [ ] 존재하지 않는 계좌 수정 테스트: HTTP 404
-- [ ] 응답 JSON의 상태 코드와 메시지 확인
+- `AccountNotFoundException.java` 생성
+- `DuplicateAccountException.java` 생성
+- `GlobalExceptionHandler.java` 수정
+- Service의 계좌 미존재 예외 변경
+- Service의 중복 계좌 예외 변경
+- 잘못된 입력값 테스트: HTTP 400
+- 존재하지 않는 계좌 조회 테스트: HTTP 404
+- 중복 계좌 등록 테스트: HTTP 409
+- 존재하지 않는 계좌 수정 테스트: HTTP 404
+- 응답 JSON의 상태 코드와 메시지 확인
 
 ## 9.10 실무 관점에서 기억할 점
 
