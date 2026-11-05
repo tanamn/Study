@@ -42,13 +42,13 @@ title: Spring 계좌관리 심화 과정 학습 개요
 
 | 단계 | 문서 | 주요 내용 |
 |---:|---|---|
-| 1 | 00-account-advanced-overview | 학습 목표와 전체 범위 |
-| 2 | 01-requirements | 금융 업무 요구사항 정의 |
-| 3 | 02-business-design | 업무 흐름과 처리 규칙 설계 |
-| 4 | 03-database-design | 테이블 및 데이터 정합성 설계 |
-| 5 | 04-api-design | REST API 및 요청·응답 설계 |
-| 6 | 05-implementation-guide | Spring Boot 및 MyBatis 구현 |
-| 7 | 06-test-guide | 기능·예외·트랜잭션 테스트 |
+| 1 | 개요 | 학습 목표와 전체 범위 |
+| 2 | 업무 요구사항 | 금융 업무 요구사항 정의 |
+| 3 | 업무 설계 | 업무 흐름과 처리 규칙 설계 |
+| 4 | 데이터베이스 설계 | 테이블 및 데이터 정합성 설계 |
+| 5 | API 설계 | REST API 및 요청·응답 설계 |
+| 6 | 구현 가이드 | Spring Boot 및 MyBatis 구현 |
+| 7 | 테스트 가이드 | 기능·예외·트랜잭션 테스트 |
 
 ## 5. 진행 방법
 
