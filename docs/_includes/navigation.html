@@ -25,9 +25,9 @@
   }
 
   .study-nav a:hover,
-  .study-nav a:focus,
+  .study-nav a:focus-visible,
   .study-nav summary:hover,
-  .study-nav summary:focus {
+  .study-nav summary:focus-visible {
     color: #fff;
     background: #159957;
     outline: none;
@@ -77,6 +77,74 @@
     border-radius: 0;
   }
 
+  /* 하위 드롭다운 */
+  .study-nav .submenu .nested-dropdown {
+    position: relative;
+  }
+
+  .study-nav .submenu .nested-dropdown > summary {
+    display: block;
+    padding: 9px 12px;
+    color: #0b6e4f;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+    border: 0;
+    border-radius: 5px;
+    background: #fff;
+  }
+
+  .study-nav .submenu .nested-dropdown > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .study-nav .submenu .nested-dropdown > summary::after {
+    content: " ▸";
+    float: right;
+  }
+
+  .study-nav .submenu .nested-dropdown[open] > summary::after {
+    content: " ▾";
+  }
+
+  .study-nav .submenu .nested-dropdown > summary:hover,
+  .study-nav .submenu .nested-dropdown > summary:focus-visible {
+    color: #fff;
+    background: #159957;
+    outline: none;
+  }
+
+  .study-nav .nested-submenu {
+    position: absolute;
+    z-index: 110;
+    top: 0;
+    left: calc(100% + 5px);
+    min-width: 300px;
+    padding: 7px;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(140, 149, 159, 0.25);
+  }
+
+  .study-nav .nested-submenu a {
+    display: block;
+    padding: 9px 12px;
+    color: #0b6e4f;
+    font-weight: 500;
+    text-decoration: none;
+    border: 0;
+    border-radius: 5px;
+  }
+
+  .study-nav .nested-submenu a:hover,
+  .study-nav .nested-submenu a:focus-visible {
+    color: #fff;
+    background: #159957;
+    outline: none;
+  }
+
   @media (max-width: 640px) {
     .study-nav {
       align-items: stretch;
@@ -94,6 +162,23 @@
       padding-left: 28px;
       font-size: 14px;
       color: #57606a;
+    }
+
+    .study-nav .submenu .nested-dropdown {
+      position: static;
+    }
+
+    .study-nav .nested-submenu {
+      position: static;
+      min-width: 0;
+      margin: 4px 0 4px 14px;
+      padding: 4px;
+      box-shadow: none;
+      border-left: 2px solid #d8dee4;
+    }
+
+    .study-nav .submenu .nested-dropdown > summary::after {
+      content: " ▾";
     }
   }
 </style>
@@ -145,19 +230,35 @@
       <a href="{{ '/spring/repository-mapper/' | relative_url }}">Repository와 Mapper</a>
       <a href="{{ '/spring/transaction/' | relative_url }}">트랜잭션</a>
       <a href="{{ '/spring/frontend-integration/' | relative_url }}">프론트엔드 프레임워크에 따른 Spring API 설계</a>
-      <a href="{{ '/spring/spring-boot-account-practice/' | relative_url }}">Spring Boot 프로그램 구현 예제</a>
-        <div class="dropdown-menu">
-          <a href="{{ '/spring/spring-boot-practice/01-java-vscode/' | relative_url }}">└ 1.Java 및 VS Code 환경</a>
-          <a href="{{ '/spring/spring-boot-practice/02-project-create/' | relative_url }}">└ 2.프로젝트 생성 및 열기</a>
-          <a href="{{ '/spring/spring-boot-practice/03-spring-boot-run/' | relative_url }}">└ 3.Spring Boot 실행</a>
-          <a href="{{ '/spring/spring-boot-practice/04-h2-database/' | relative_url }}">└ 4.H2 및 계좌 테이블</a>
-          <a href="{{ '/spring/spring-boot-practice/05-dto-mapper/' | relative_url }}">└ 5.DTO 및 Mapper 인터페이스</a>
-          <a href="{{ '/spring/spring-boot-practice/06-mapper-xml-service/' | relative_url }}">└ 6.Mapper XML 및 Service</a>
-          <a href="{{ '/spring/spring-boot-practice/07-controller-api-test/' | relative_url }}">└ 7.Controller 및 Postman 테스트</a>
-          <a href="{{ '/spring/spring-boot-practice/08-global-exception-handler/' | relative_url }}">└ 8. 공통 예외 처리 클래스 구현</a>
-          <a href="{{ '/spring/spring-boot-practice/09-custom-exceptions/' | relative_url }}">└ 9. 사용자 정의 예외 클래스 구현</a>
-          <a href="{{ '/spring/spring-boot-practice/10-project-final-review/' | relative_url }}">└ 10. 프로젝트 최종 리뷰</a>
+      <details class="nested-dropdown">
+        <summary>Spring Boot 프로그램 구현 예제</summary>
+        <div class="nested-submenu">
+          <a href="{{ '/spring/spring-boot-practice/00-practice-overview/' | relative_url }}">개요</a>
+          <a href="{{ '/spring/spring-boot-practice/01-java-vscode/' | relative_url }}">1. Java 및 VS Code 환경</a>
+          <a href="{{ '/spring/spring-boot-practice/02-project-create/' | relative_url }}">2. 프로젝트 생성 및 열기</a>
+          <a href="{{ '/spring/spring-boot-practice/03-spring-boot-run/' | relative_url }}">3. Spring Boot 실행</a>
+          <a href="{{ '/spring/spring-boot-practice/04-h2-database/' | relative_url }}">4. H2 및 계좌 테이블</a>
+          <a href="{{ '/spring/spring-boot-practice/05-dto-mapper/' | relative_url }}">5. DTO 및 Mapper 인터페이스</a>
+          <a href="{{ '/spring/spring-boot-practice/06-mapper-xml-service/' | relative_url }}">6. Mapper XML 및 Service</a>
+          <a href="{{ '/spring/spring-boot-practice/07-controller-api-test/' | relative_url }}">7. Controller 및 Postman 테스트</a>
+          <a href="{{ '/spring/spring-boot-practice/08-global-exception-handler/' | relative_url }}">8. 공통 예외 처리 클래스 구현</a>
+          <a href="{{ '/spring/spring-boot-practice/09-custom-exceptions/' | relative_url }}">9. 사용자 정의 예외 클래스 구현</a>
+          <a href="{{ '/spring/spring-boot-practice/10-project-final-review/' | relative_url }}">10. 프로젝트 최종 리뷰</a>
         </div>
+      </details>
+
+      <details class="nested-dropdown">
+        <summary>Spring 계좌관리 심화 과정</summary>
+        <div class="nested-submenu">
+          <a href="{{ '/spring/spring-account-advanced/00-account-advanced-overview/' | relative_url }}">개요</a>
+          <a href="{{ '/spring/spring-account-advanced/01-requirements/' | relative_url }}">1. 업무 요구사항</a>
+          <a href="{{ '/spring/spring-account-advanced/02-business-design/' | relative_url }}">2. 업무 설계</a>
+          <a href="{{ '/spring/spring-account-advanced/03-database-design/' | relative_url }}">3. 데이터베이스 설계</a>
+          <a href="{{ '/spring/spring-account-advanced/04-api-design/' | relative_url }}">4. API 설계</a>
+          <a href="{{ '/spring/spring-account-advanced/05-implementation-guide/' | relative_url }}">5. 구현 가이드</a>
+          <a href="{{ '/spring/spring-account-advanced/06-test-guide/' | relative_url }}">6. 테스트 가이드</a>
+        </div>
+      </details>
     </div>
   </details>
 

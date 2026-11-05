@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/05-api-design/
+permalink: /spring/spring-account-advanced/04-api-design/
 title: Spring 계좌관리 심화 과정 API 설계
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/06-implementation-guide/
+permalink: /spring/spring-account-advanced/05-implementation-guide/
 title: Spring 계좌관리 심화 과정 구현 가이드
 ---
 

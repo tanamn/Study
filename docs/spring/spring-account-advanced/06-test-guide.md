@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/07-test-guide/
+permalink: /spring/spring-account-advanced/06-test-guide/
 title: Spring 계좌관리 심화 과정 테스트 가이드
 ---
 

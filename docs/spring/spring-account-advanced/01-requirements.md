@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/02-requirements/
+permalink: /spring/spring-account-advanced/01-requirements/
 title: Spring 계좌관리 심화 과정 업무 요구사항
 ---
 

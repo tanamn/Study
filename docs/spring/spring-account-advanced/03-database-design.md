@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/04-database-design/
+permalink: /spring/spring-account-advanced/03-database-design/
 title: Spring 계좌관리 심화 과정 데이터베이스 설계
 ---
 

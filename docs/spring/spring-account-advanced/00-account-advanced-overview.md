@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/01-learning-overview/
+permalink: /spring/spring-account-advanced/00-account-advanced-overview/
 title: Spring 계좌관리 심화 과정 학습 개요
 ---
 

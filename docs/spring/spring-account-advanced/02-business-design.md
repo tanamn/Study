@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /spring/spring-account-advanced/03-business-design/
+permalink: /spring/spring-account-advanced/02-business-design/
 title: Spring 계좌관리 심화 과정 업무 설계
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Spring Boot 프로그램 구현하기 예제
-permalink: /spring/spring-boot-account-practice/
+permalink: /spring/spring-boot-account-practice/practice-overview/
 ---
 
 {% include navigation.html %}
