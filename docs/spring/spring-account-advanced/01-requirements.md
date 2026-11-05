@@ -1,12 +1,14 @@
 ---
 layout: default
 permalink: /spring/spring-account-advanced/01-requirements/
-title: Spring 계좌관리 심화 과정 업무 요구사항
+title: Spring 계좌관리 심화 과정 - 1단계.업무 요구사항
 ---
 
 {% include navigation.html %}
 
-# 1. 문서 목적
+# Spring 계좌관리 심화 과정 - 1단계.업무 요구사항
+
+## 1. 문서 목적
 
 계좌관리 심화 프로젝트에서 구현할 금융 업무의 범위와 기능·비기능
 요구사항을 정의한다. 이 문서는 이후 업무 설계, 데이터베이스 설계, API

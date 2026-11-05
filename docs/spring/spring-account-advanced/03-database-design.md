@@ -1,12 +1,14 @@
 ---
 layout: default
 permalink: /spring/spring-account-advanced/03-database-design/
-title: Spring 계좌관리 심화 과정 데이터베이스 설계
+title: Spring 계좌관리 심화 과정 - 3단계.데이터베이스 설계
 ---
 
 {% include navigation.html %}
 
-# 1. 문서 목적
+# Spring 계좌관리 심화 과정 - 3단계.데이터베이스 설계
+
+## 1. 문서 목적
 
 계좌관리 심화 프로젝트의 데이터 구조와 테이블 간 관계를 정의한다.
 

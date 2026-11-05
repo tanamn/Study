@@ -1,12 +1,14 @@
 ---
 layout: default
 permalink: /spring/spring-account-advanced/04-api-design/
-title: Spring 계좌관리 심화 과정 API 설계
+title: Spring 계좌관리 심화 과정 - 4단계.API 설계
 ---
 
 {% include navigation.html %}
 
-# 1. 문서 목적
+# Spring 계좌관리 심화 과정 - 4단계.API 설계
+
+## 1. 문서 목적
 
 계좌관리 업무를 외부에서 호출할 수 있도록 REST API의 URI, HTTP 메서드,
 요청·응답 및 오류 규칙을 정의한다. 실제 구현 시 세부 필드와 상태 코드를

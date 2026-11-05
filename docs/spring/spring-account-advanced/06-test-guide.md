@@ -1,12 +1,14 @@
 ---
 layout: default
 permalink: /spring/spring-account-advanced/06-test-guide/
-title: Spring 계좌관리 심화 과정 테스트 가이드
+title: Spring 계좌관리 심화 과정 - 6단계.테스트 가이드
 ---
 
 {% include navigation.html %}
 
-# 1. 문서 목적
+# Spring 계좌관리 심화 과정 - 6단계.테스트 가이드
+
+## 1. 문서 목적
 
 계좌관리 기능이 요구사항과 업무 규칙에 맞게 동작하는지 검증한다. 정상
 흐름뿐 아니라 입력 오류, 업무 오류, 트랜잭션 롤백 및 동시성 상황을

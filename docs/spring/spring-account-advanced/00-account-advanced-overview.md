@@ -1,12 +1,14 @@
 ---
 layout: default
 permalink: /spring/spring-account-advanced/00-account-advanced-overview/
-title: Spring 계좌관리 심화 과정 학습 개요
+title: Spring 계좌관리 심화 과정 - 학습 개요
 ---
 
 {% include navigation.html %}
 
-# 1. 학습 목적
+# Spring 계좌관리 심화 과정 - 학습 개요
+
+## 1. 학습 목적
 
 기본 과정에서 구현한 Spring Boot 계좌관리 프로그램을 바탕으로 금융 거래
 업무를 분석·설계하고, MyBatis와 Spring의 주요 기능을 활용하여 심화
