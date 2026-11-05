@@ -27,14 +27,14 @@ title: Spring 계좌관리 심화 과정 데이터베이스 설계
 계좌 기본정보를 변경하는 업무와 잔액을 변경하는 금융 거래 업무를
 분리한다.
 
-  업무                         관리 대상
-  ---------------------------- ---------------------
-  계좌명 변경                  ACCOUNT
-  계좌 상태 변경               ACCOUNT
-  고객과 계좌 연결정보 변경    ACCOUNT
-  현재 잔액 조회               ACCOUNT_BALANCE
-  입금·출금에 따른 잔액 변경   ACCOUNT_BALANCE
-  입금·출금 거래 기록          ACCOUNT_TRANSACTION
+| 업무 | 관리 대상 |
+|---|---|
+| 계좌명 변경 | `ACCOUNT` |
+| 계좌 상태 변경 | `ACCOUNT` |
+| 고객과 계좌 연결정보 변경 | `ACCOUNT` |
+| 현재 잔액 조회 | `ACCOUNT_BALANCE` |
+| 입금·출금에 따른 잔액 변경 | `ACCOUNT_BALANCE` |
+| 입금·출금 거래 기록 | `ACCOUNT_TRANSACTION` |
 
 계좌명이나 계좌 상태를 변경할 때 잔액을 조회하거나 검증하지 않는다. 잔액
 변경은 입금·출금·이체 등 거래 업무를 통해서만 수행한다.
@@ -52,11 +52,11 @@ title: Spring 계좌관리 심화 과정 데이터베이스 설계
 
 ## 3.1 핵심 테이블
 
-  테이블                역할               관계
-  --------------------- ------------------ ---------------
-  ACCOUNT               계좌 기본정보      기준 테이블
-  ACCOUNT_BALANCE       계좌별 현재 잔액   ACCOUNT와 1:1
-  ACCOUNT_TRANSACTION   계좌별 거래 이력   ACCOUNT와 1:N
+| 테이블 | 역할 | 관계 |
+|---|---|---|
+| `ACCOUNT` | 계좌 기본정보 | 기준 테이블 |
+| `ACCOUNT_BALANCE` | 계좌별 현재 잔액 | `ACCOUNT`와 1:1 |
+| `ACCOUNT_TRANSACTION` | 계좌별 거래 이력 | `ACCOUNT`와 1:N |
 
 ## 3.2 ERD
 
@@ -107,14 +107,14 @@ erDiagram
 
 계좌의 식별정보와 관리정보를 저장한다. 잔액 컬럼은 포함하지 않는다.
 
-  컬럼           데이터형(예시)     필수 키   설명
-  -------------- ---------------- ------ ---- ---------------------------
-  ACCOUNT_NO     VARCHAR(20)           Y PK   계좌번호
-  ACCOUNT_NAME   VARCHAR(100)          Y      계좌명
-  CUSTOMER_ID    VARCHAR(30)           Y      고객 식별자(학습용)
-  STATUS         VARCHAR(20)           Y      ACTIVE, SUSPENDED, CLOSED
-  CREATED_AT     TIMESTAMP             Y      생성 시각
-  UPDATED_AT     TIMESTAMP             Y      최종 수정 시각
+| 컬럼 | 데이터형(예시) | 필수 | 키 | 설명 |
+|---|---|:---:|---|---|
+| `ACCOUNT_NO` | `VARCHAR(20)` | Y | PK | 계좌번호 |
+| `ACCOUNT_NAME` | `VARCHAR(100)` | Y |  | 계좌명 |
+| `CUSTOMER_ID` | `VARCHAR(30)` | Y |  | 고객 식별자(학습용) |
+| `STATUS` | `VARCHAR(20)` | Y |  | ACTIVE, SUSPENDED, CLOSED |
+| `CREATED_AT` | `TIMESTAMP` | Y |  | 생성 시각 |
+| `UPDATED_AT` | `TIMESTAMP` | Y |  | 최종 수정 시각 |
 
 ## 4.2 업무 규칙
 
@@ -132,12 +132,12 @@ erDiagram
 계좌별 현재 잔액을 관리한다. `ACCOUNT_NO`를 기본키이자 ACCOUNT를
 참조하는 외래키로 사용하여 1:1 관계를 표현한다.
 
-  컬럼         데이터형(예시)     필수 키       설명
-  ------------ ---------------- ------ -------- ---------------------
-  ACCOUNT_NO   VARCHAR(20)           Y PK, FK   계좌번호
-  BALANCE      DECIMAL(18,2)         Y          현재 잔액
-  VERSION      BIGINT                Y          낙관적 잠금용 버전
-  UPDATED_AT   TIMESTAMP             Y          잔액 최종 변경 시각
+| 컬럼 | 데이터형(예시) | 필수 | 키 | 설명 |
+|---|---|:---:|---|---|
+| `ACCOUNT_NO` | `VARCHAR(20)` | Y | PK, FK | 계좌번호 |
+| `BALANCE` | `DECIMAL(18,2)` | Y |  | 현재 잔액 |
+| `VERSION` | `BIGINT` | Y |  | 낙관적 잠금용 버전 |
+| `UPDATED_AT` | `TIMESTAMP` | Y |  | 잔액 최종 변경 시각 |
 
 ## 5.2 업무 규칙
 
@@ -185,23 +185,23 @@ UPDATE 결과 건수가 1이면 차감 성공, 0이면 계좌 없음 또는 잔�
 입금·출금 등 잔액 변동의 근거를 기록한다. 이체는 출금 계좌와 입금 계좌에
 각각 거래 기록을 남기고, 동일한 이체 식별자로 연결한다.
 
-  컬럼               데이터형(예시)     필수 키   설명
-  ------------------ ---------------- ------ ---- -------------------------
-  TRANSACTION_ID     BIGINT                Y PK   거래 이력 식별자
-  ACCOUNT_NO         VARCHAR(20)           Y FK   거래 계좌번호
-  TRANSFER_ID        VARCHAR(36)           N      이체 연결 식별자
-  TRANSACTION_TYPE   VARCHAR(20)           Y      DEPOSIT 또는 WITHDRAWAL
-  AMOUNT             DECIMAL(18,2)         Y      거래 금액(양수)
-  BALANCE_AFTER      DECIMAL(18,2)         Y      거래 처리 후 잔액
-  DESCRIPTION        VARCHAR(200)          N      거래 설명
-  CREATED_AT         TIMESTAMP             Y      거래 기록 시각
+| 컬럼 | 데이터형(예시) | 필수 | 키 | 설명 |
+|---|---|:---:|---|---|
+| `TRANSACTION_ID` | `BIGINT` | Y | PK | 거래 이력 식별자 |
+| `ACCOUNT_NO` | `VARCHAR(20)` | Y | FK | 거래 계좌번호 |
+| `TRANSFER_ID` | `VARCHAR(36)` | N |  | 이체 연결 식별자 |
+| `TRANSACTION_TYPE` | `VARCHAR(20)` | Y |  | DEPOSIT 또는 WITHDRAWAL |
+| `AMOUNT` | `DECIMAL(18,2)` | Y |  | 거래 금액(양수) |
+| `BALANCE_AFTER` | `DECIMAL(18,2)` | Y |  | 거래 처리 후 잔액 |
+| `DESCRIPTION` | `VARCHAR(200)` | N |  | 거래 설명 |
+| `CREATED_AT` | `TIMESTAMP` | Y |  | 거래 기록 시각 |
 
 ## 6.2 거래 유형
 
-  거래 유형    의미     잔액 영향
-  ------------ ------ -----------
-  DEPOSIT      입금          증가
-  WITHDRAWAL   출금          감소
+| 거래 유형 | 의미 | 잔액 영향 |
+|---|---|---|
+| `DEPOSIT` | 입금 | 증가 |
+| `WITHDRAWAL` | 출금 | 감소 |
 
 이체는 하나의 거래 이력 행으로만 표현하지 않는다. 출금 계좌에는
 `WITHDRAWAL`, 입금 계좌에는 `DEPOSIT` 기록을 각각 남기고 두 행에 같은
@@ -295,22 +295,14 @@ COMMIT
 
 # 8. 인덱스 및 제약조건
 
-  ------------------------------------------------------------------------------------
-  대상                                 제약조건 또는 인덱스    목적
-  ------------------------------------ ----------------------- -----------------------
-  ACCOUNT.ACCOUNT_NO                   PK                      계좌 식별
-
-  ACCOUNT_BALANCE.ACCOUNT_NO           PK, FK                  계좌별 잔액 1건 보장
-
-  ACCOUNT_TRANSACTION.TRANSACTION_ID   PK                      거래 이력 식별
-
-  ACCOUNT_TRANSACTION.ACCOUNT_NO       FK 및 조회 인덱스       계좌별 거래 조회
-
-  ACCOUNT_TRANSACTION(ACCOUNT_NO,      복합 인덱스 검토        기간별 거래 조회
-  CREATED_AT)                                                  
-
-  ACCOUNT_TRANSACTION.TRANSFER_ID      인덱스 검토             이체 거래 추적
-  ------------------------------------------------------------------------------------
+| 대상 | 제약조건 또는 인덱스 | 목적 |
+|---|---|---|
+| `ACCOUNT.ACCOUNT_NO` | PK | 계좌 식별 |
+| `ACCOUNT_BALANCE.ACCOUNT_NO` | PK, FK | 계좌별 잔액 1건 보장 |
+| `ACCOUNT_TRANSACTION.TRANSACTION_ID` | PK | 거래 이력 식별 |
+| `ACCOUNT_TRANSACTION.ACCOUNT_NO` | FK 및 조회 인덱스 | 계좌별 거래 조회 |
+| `ACCOUNT_TRANSACTION(ACCOUNT_NO, CREATED_AT)` | 복합 인덱스 검토 | 기간별 거래 조회 |
+| `ACCOUNT_TRANSACTION.TRANSFER_ID` | 인덱스 검토 | 이체 거래 추적 |
 
 금액 양수, 잔액 0 이상, 상태 허용값 등은 애플리케이션 검증과 DB
 제약조건을 함께 적용한다. 제약조건 문법과 인덱스 전략은 실제 DBMS에 맞춰
@@ -328,18 +320,11 @@ COMMIT
 
 ## 9.2 동시성 제어 방식
 
-  -----------------------------------------------------------------------
-  방식                    개념                    검토 사항
-  ----------------------- ----------------------- -----------------------
-  조건부 UPDATE           잔액 조건을 SQL에       UPDATE 결과 건수 확인
-                          포함하여 차감           
-
-  비관적 잠금             대상 행을 잠근 뒤 처리  잠금 순서와 대기·교착
-                                                  관리
-
-  낙관적 잠금             VERSION 값으로 갱신     충돌 시 재시도 또는
-                          충돌 확인               오류 처리
-  -----------------------------------------------------------------------
+| 방식 | 개념 | 검토 사항 |
+|---|---|---|
+| 조건부 UPDATE | 잔액 조건을 SQL에 포함하여 차감 | UPDATE 결과 건수 확인 |
+| 비관적 잠금 | 대상 행을 잠근 뒤 처리 | 잠금 순서와 대기·교착 관리 |
+| 낙관적 잠금 | VERSION 값으로 갱신 충돌 확인 | 충돌 시 재시도 또는 오류 처리 |
 
 초기 구현에서는 조건부 UPDATE를 적용해 보고, 이후 비관적 잠금 또는
 낙관적 잠금과 비교 실습한다.

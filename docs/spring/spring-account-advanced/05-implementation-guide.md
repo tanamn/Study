@@ -13,17 +13,17 @@ title: Spring 계좌관리 심화 과정 구현 가이드
 
 ## 2. 프로젝트 기술 구성
 
-  영역           기술                 역할
-  -------------- -------------------- --------------------------
-  언어           Java                 애플리케이션 구현
-  프레임워크     Spring Boot          애플리케이션 기반
-  웹             Spring Web           REST API
-  검증           Spring Validation    요청값 검증
-  데이터 접근    MyBatis              SQL 실행 및 결과 매핑
-  데이터베이스   학습용 DB부터 시작   계좌 및 거래 데이터 저장
-  테스트         JUnit, Mockito       단위·통합 테스트
-  API 문서       Swagger / OpenAPI    API 명세 확인
-  실행 환경      Docker(후속)         실행 환경 구성
+| 영역 | 기술 | 역할 |
+|---|---|---|
+| 언어 | Java | 애플리케이션 구현 |
+| 프레임워크 | Spring Boot | 애플리케이션 기반 |
+| 웹 | Spring Web | REST API |
+| 검증 | Spring Validation | 요청값 검증 |
+| 데이터 접근 | MyBatis | SQL 실행 및 결과 매핑 |
+| 데이터베이스 | 학습용 DB부터 시작 | 계좌 및 거래 데이터 저장 |
+| 테스트 | JUnit, Mockito | 단위·통합 테스트 |
+| API 문서 | Swagger / OpenAPI | API 명세 확인 |
+| 실행 환경 | Docker(후속) | 실행 환경 구성 |
 
 Java 및 Spring Boot 버전과 DBMS는 프로젝트 생성 시 확정하고 README에
 기록한다.
@@ -91,15 +91,15 @@ SQL과 결과 매핑을 정의한다.
 
 ## 5. 계층별 책임
 
-  계층         책임
-  ------------ -------------------------------
-  Controller   HTTP 요청·응답, 입력 DTO 전달
-  Service      업무 규칙, 트랜잭션 경계
-  Mapper       SQL 호출
-  Mapper XML   SQL 및 결과 매핑
-  DTO          API 요청·응답 데이터
-  Domain       업무 데이터 표현
-  Exception    업무·시스템 예외 정의
+| 계층 | 책임 |
+|---|---|
+| Controller | HTTP 요청·응답, 입력 DTO 전달 |
+| Service | 업무 규칙, 트랜잭션 경계 |
+| Mapper | SQL 호출 |
+| Mapper XML | SQL 및 결과 매핑 |
+| DTO | API 요청·응답 데이터 |
+| Domain | 업무 데이터 표현 |
+| Exception | 업무·시스템 예외 정의 |
 
 Controller에 SQL이나 핵심 업무 규칙을 넣지 않고, Mapper가 API 응답
 형식을 직접 결정하지 않도록 한다.

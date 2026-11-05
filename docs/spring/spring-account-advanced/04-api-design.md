@@ -23,20 +23,13 @@ title: Spring 계좌관리 심화 과정 API 설계
 
 ## 3. API 목록(초안)
 
-  ----------------------------------------------------------------------------------------------
-  기능              Method            URI                                      설명
-  ----------------- ----------------- ---------------------------------------- -----------------
-  계좌 조회         GET               /api/accounts/{accountNo}                계좌 기본정보 및
-                                                                               잔액
-
-  입금              POST              /api/accounts/{accountNo}/deposits       입금 요청
-
-  출금              POST              /api/accounts/{accountNo}/withdrawals    출금 요청
-
-  계좌이체          POST              /api/transfers                           계좌 간 이체
-
-  거래내역 조회     GET               /api/accounts/{accountNo}/transactions   거래내역 목록
-  ----------------------------------------------------------------------------------------------
+| 기능 | Method | URI | 설명 |
+|---|---|---|---|
+| 계좌 조회 | GET | `/api/accounts/{accountNo}` | 계좌 기본정보 및 잔액 |
+| 입금 | POST | `/api/accounts/{accountNo}/deposits` | 입금 요청 |
+| 출금 | POST | `/api/accounts/{accountNo}/withdrawals` | 출금 요청 |
+| 계좌이체 | POST | `/api/transfers` | 계좌 간 이체 |
+| 거래내역 조회 | GET | `/api/accounts/{accountNo}/transactions` | 거래내역 목록 |
 
 ## 4. 입금 요청 예시
 
@@ -99,16 +92,16 @@ Content-Type: application/json
 
 ## 7. HTTP 상태 코드 기준
 
-  상태 코드                   사용 예
-  --------------------------- --------------------------------
-  200 OK                      조회 또는 정상 처리
-  201 Created                 거래 리소스 생성이 적절한 경우
-  400 Bad Request             요청 형식 또는 입력값 오류
-  401 Unauthorized            인증되지 않은 요청
-  403 Forbidden               권한이 없는 요청
-  404 Not Found               계좌 등 대상 리소스 없음
-  409 Conflict                잔액·상태·중복 요청 충돌
-  500 Internal Server Error   예기치 않은 시스템 오류
+| 상태 코드 | 사용 예 |
+|---|---|
+| `200 OK` | 조회 또는 정상 처리 |
+| `201 Created` | 거래 리소스 생성이 적절한 경우 |
+| `400 Bad Request` | 요청 형식 또는 입력값 오류 |
+| `401 Unauthorized` | 인증되지 않은 요청 |
+| `403 Forbidden` | 권한이 없는 요청 |
+| `404 Not Found` | 계좌 등 대상 리소스 없음 |
+| `409 Conflict` | 잔액·상태·중복 요청 충돌 |
+| `500 Internal Server Error` | 예기치 않은 시스템 오류 |
 
 실제 상태 코드는 API의 의미와 오류 정책을 확정한 뒤 일관되게 적용한다.
 
